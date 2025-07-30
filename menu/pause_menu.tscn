@@ -15,7 +15,6 @@ layer = 3
 script = ExtResource("1_cdtl2")
 
 [node name="options_menu" parent="." instance=ExtResource("1_5ijvr")]
-visible = false
 
 [node name="Panel" type="Panel" parent="."]
 material = ExtResource("3_gulp2")
