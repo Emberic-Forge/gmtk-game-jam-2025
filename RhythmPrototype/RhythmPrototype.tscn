@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://c00yqn3o6ylfi"]
+
+[ext_resource type="Script" uid="uid://fj4bx0foo6b4" path="res://RhythmPrototype/rhythm_prototype.gd" id="1_h4p1r"]
+[ext_resource type="AudioStream" uid="uid://88m08qo5k46x" path="res://RhythmPrototype/Press.mp3" id="2_6peib"]
+[ext_resource type="Texture2D" uid="uid://t7geti12imys" path="res://RhythmPrototype/Circle.png" id="2_dtw20"]
+[ext_resource type="Texture2D" uid="uid://d2cci0wnye2rp" path="res://RhythmPrototype/Poor.png" id="3_4f4wb"]
+[ext_resource type="AudioStream" uid="uid://b6nk50ubjt004" path="res://RhythmPrototype/snare.mp3" id="3_038th"]
+[ext_resource type="Texture2D" uid="uid://cupp3pe1jxkmq" path="res://RhythmPrototype/OK.png" id="4_6peib"]
+[ext_resource type="Script" uid="uid://cnmt5jy5sd8p4" path="res://RhythmPrototype/FadingSprite.gd" id="4_dtw20"]
+[ext_resource type="Texture2D" uid="uid://uumld5emdw24" path="res://RhythmPrototype/Good.png" id="5_038th"]
+[ext_resource type="Texture2D" uid="uid://bphristh50jf5" path="res://RhythmPrototype/Perfect.png" id="6_thrlw"]
+
+[node name="RhythmPrototype" type="Node2D" node_paths=PackedStringArray("press_audio", "snare_audio", "poor_sprite", "ok_sprite", "good_sprite", "perfect_sprite")]
+script = ExtResource("1_h4p1r")
+press_audio = NodePath("PressPlayer")
+snare_audio = NodePath("SnarePlayer")
+poor_sprite = NodePath("Sprites/Poor")
+ok_sprite = NodePath("Sprites/OK")
+good_sprite = NodePath("Sprites/Good")
+perfect_sprite = NodePath("Sprites/Pefect")
+
+[node name="Circle" type="Sprite2D" parent="."]
+position = Vector2(576, 320)
+scale = Vector2(0.150249, 0.150249)
+texture = ExtResource("2_dtw20")
+
+[node name="Sprites" type="Node" parent="."]
+
+[node name="Poor" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(160, 408)
+scale = Vector2(0.4202, 0.4202)
+texture = ExtResource("3_4f4wb")
+script = ExtResource("4_dtw20")
+
+[node name="OK" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(160, 408)
+scale = Vector2(0.4202, 0.4202)
+texture = ExtResource("4_6peib")
+script = ExtResource("4_dtw20")
+
+[node name="Good" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(160, 408)
+scale = Vector2(0.4202, 0.4202)
+texture = ExtResource("5_038th")
+script = ExtResource("4_dtw20")
+
+[node name="Pefect" type="Sprite2D" parent="Sprites"]
+visible = false
+position = Vector2(160, 408)
+scale = Vector2(0.4202, 0.4202)
+texture = ExtResource("6_thrlw")
+script = ExtResource("4_dtw20")
+
+[node name="SnarePlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_038th")
+
+[node name="PressPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_6peib")
