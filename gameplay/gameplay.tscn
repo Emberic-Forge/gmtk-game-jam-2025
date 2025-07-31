@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://byffep0v3hiy7"]
+
+[ext_resource type="Script" uid="uid://d3gn7ywepym3m" path="res://gameplay/scripts/gameplay.gd" id="1_nyvx4"]
+[ext_resource type="PackedScene" uid="uid://dwamggnam1yc" path="res://gameplay/mini_games/test_mini_game.tscn" id="2_41n4r"]
+[ext_resource type="PackedScene" uid="uid://cfrh4t3i4ed0p" path="res://menu/pause_menu.tscn" id="3_ueusv"]
+
+[node name="Root" type="Node"]
+script = ExtResource("1_nyvx4")
+
+[node name="TestMiniGame" parent="." instance=ExtResource("2_41n4r")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_ueusv")]
+
+[editable path="TestMiniGame"]
+[editable path="TestMiniGame/RhythmPrototype"]

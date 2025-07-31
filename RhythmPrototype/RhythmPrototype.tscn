@@ -59,3 +59,13 @@ stream = ExtResource("3_038th")
 
 [node name="PressPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_6peib")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="HUD"]
+texture_filter = 1
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 55.0
+offset_bottom = 37.0
+text = "Lorem Ipsum"
