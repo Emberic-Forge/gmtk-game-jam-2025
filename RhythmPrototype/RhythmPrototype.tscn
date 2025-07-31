@@ -12,7 +12,6 @@
 
 [node name="RhythmPrototype" type="Node2D" node_paths=PackedStringArray("press_audio", "snare_audio", "poor_sprite", "ok_sprite", "good_sprite", "perfect_sprite")]
 script = ExtResource("1_h4p1r")
-beats_per_minute = 120
 press_audio = NodePath("PressPlayer")
 snare_audio = NodePath("SnarePlayer")
 poor_sprite = NodePath("Sprites/Poor")
