@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbkrnw3rwa7c1"]
+
+[ext_resource type="Texture2D" uid="uid://dxt4yoexqr5rj" path="res://racingTest/kenney_racing-pack/PNG/Characters/character_black_blue.png" id="1_co04t"]
+[ext_resource type="Script" uid="uid://ddt7u6gpedkyg" path="res://RewindTest/RewindablePlayer.gd" id="1_jtq1u"]
+[ext_resource type="PackedScene" uid="uid://iuj7hjuebhga" path="res://RewindTest/RewindablePlayer.tscn" id="2_tvsup"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtq1u"]
+
+[node name="RewindTest" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." node_paths=PackedStringArray("rewind_children")]
+script = ExtResource("1_jtq1u")
+rewind_character_scene = ExtResource("2_tvsup")
+rewind_children = NodePath("../RewindCharacters")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("RectangleShape2D_jtq1u")
+
+[node name="TextureRect" type="TextureRect" parent="CharacterBody2D"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_co04t")
+
+[node name="RewindButton" type="Button" parent="."]
+offset_left = 1000.0
+offset_right = 1152.0
+offset_bottom = 96.0
+text = "REWIND"
+
+[node name="RewindCharacters" type="Node" parent="."]
+
+[connection signal="pressed" from="RewindButton" to="CharacterBody2D" method="_on_rewind_button_pressed"]

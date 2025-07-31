@@ -200,7 +200,6 @@ texture = ExtResource("3_v03sg")
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_o1nn5")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
@@ -214,6 +213,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Choice1" type="Button" parent="CharacterBody2D/Camera2D/Control"]
+layout_mode = 0
 offset_left = -1120.0
 offset_top = -380.0
 offset_right = -600.0
@@ -221,6 +221,7 @@ offset_bottom = 220.0
 text = "Speed"
 
 [node name="Choice2" type="Button" parent="CharacterBody2D/Camera2D/Control"]
+layout_mode = 0
 offset_left = -280.0
 offset_top = -380.0
 offset_right = 240.0
@@ -228,6 +229,7 @@ offset_bottom = 220.0
 text = "Handling"
 
 [node name="Choice3" type="Button" parent="CharacterBody2D/Camera2D/Control"]
+layout_mode = 0
 offset_left = 680.0
 offset_top = -380.0
 offset_right = 1200.0
@@ -236,12 +238,10 @@ text = "Acceleration"
 
 [node name="FinishLine" type="Area2D" parent="."]
 position = Vector2(200, 392)
-scale = Vector2(1, 1)
 script = SubResource("GDScript_o1nn5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishLine"]
 position = Vector2(0, 3.05176e-05)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_v03sg")
 
 [connection signal="pressed" from="CharacterBody2D/Camera2D/Control/Choice1" to="CharacterBody2D" method="_on_choice_1_pressed"]
