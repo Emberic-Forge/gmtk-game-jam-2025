@@ -17,7 +17,7 @@ var current_time = 0
 
 func _process( delta ):
 	current_time += delta
-	var beat_time = 60/beats_per_minute
+	var beat_time = 60.0/beats_per_minute
 	
 	if ( Input.is_action_just_pressed("Action") ):
 		var offset = current_time
