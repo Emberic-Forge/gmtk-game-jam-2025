@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://c00yqn3o6ylfi"]
 
 [ext_resource type="Script" uid="uid://fj4bx0foo6b4" path="res://RhythmPrototype/rhythm_prototype.gd" id="1_h4p1r"]
-[ext_resource type="AudioStream" uid="uid://88m08qo5k46x" path="res://RhythmPrototype/Press.mp3" id="2_6peib"]
+[ext_resource type="AudioStream" uid="uid://88m08qo5k46x" path="res://SleepingMinigame/Assets/Audio/Press.mp3" id="2_6peib"]
 [ext_resource type="Texture2D" uid="uid://t7geti12imys" path="res://RhythmPrototype/Circle.png" id="2_dtw20"]
 [ext_resource type="Texture2D" uid="uid://d2cci0wnye2rp" path="res://RhythmPrototype/Poor.png" id="3_4f4wb"]
-[ext_resource type="AudioStream" uid="uid://b6nk50ubjt004" path="res://RhythmPrototype/snare.mp3" id="3_038th"]
+[ext_resource type="AudioStream" uid="uid://b6nk50ubjt004" path="res://SleepingMinigame/Assets/Audio/snare.mp3" id="3_038th"]
 [ext_resource type="Texture2D" uid="uid://cupp3pe1jxkmq" path="res://RhythmPrototype/OK.png" id="4_6peib"]
 [ext_resource type="Script" uid="uid://cnmt5jy5sd8p4" path="res://RhythmPrototype/FadingSprite.gd" id="4_dtw20"]
 [ext_resource type="Texture2D" uid="uid://uumld5emdw24" path="res://RhythmPrototype/Good.png" id="5_038th"]
