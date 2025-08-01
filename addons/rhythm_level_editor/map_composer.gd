@@ -15,10 +15,19 @@ func _enter_tree() -> void:
 
 #File Parsing
 func load_from_file(path : String) -> void:
-	pass
+	var file = FileAccess.open(path, FileAccess.READ)
+	var data = file.get_as_text()
+	var json := JSON.new()
+	var error := json.parse(data)
+	if error == OK:
+		current_map = json.data
+	else:
+		printerr("Failed to load file at [%s]" % path)
 
 func save_to_file(path : String) -> void:
-	pass
+	var json_data = JSON.stringify(current_map)
+	var file = FileAccess.open(path, FileAccess.WRITE)
+	file.store_string(json_data)
 
 func clear_current_map() -> void:
 	current_map = {}
@@ -35,6 +44,9 @@ func get_map_offset() -> float:
 
 func get_map_music() -> AudioStream:
 	return load(current_map[MUSIC])
+
+func get_map_music_path() -> String:
+	return current_map[MUSIC]
 
 #Setters
 func set_map_name(new_name : String) -> void:

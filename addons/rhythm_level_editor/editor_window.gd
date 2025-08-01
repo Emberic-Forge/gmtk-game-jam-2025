@@ -29,7 +29,9 @@ func _on_clear_composer_pressed():
 	RhythmComposer.clear_current_map()
 	select_music.text = default_select_music_title
 	music_player.stream = null
+	playback.value = 0
 	paused_pos = 0
+	timer.text = "%02d:%02d" % [0, 0]
 
 func _on_load_map_pressed():
 	initialize_file_dialog(EditorFileDialog.FileMode.FILE_MODE_OPEN_FILE, on_confirmed_file_load, "*.json", "Json")
@@ -91,6 +93,12 @@ func on_confirmed_file_save(file_name : String) -> void:
 
 func on_confirmed_file_load(file_name : String) -> void:
 	RhythmComposer.load_from_file(file_name)
+	var clip = RhythmComposer.get_map_music()
+	music_player.stream = clip
+	select_music.text = RhythmComposer.get_map_music_path()
+	playback.value = 0
+	paused_pos = 0
+	timer.text = "%02d:%02d" % [0, 0]
 	if dialog:
 		dialog.queue_free()
 
