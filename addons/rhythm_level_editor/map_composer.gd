@@ -67,11 +67,9 @@ func set_map_offset(new_value : float) -> void:
 func set_map_music(path : String) -> void:
 	current_map[MUSIC] = path
 
-func read_input(incoming_input : InputEvent, time_stamp : float) -> void:
-	if incoming_input is not InputEventKey || not is_currently_recording || incoming_input.is_released():
-		return
-	print("%s - %f" % [incoming_input.as_text(), time_stamp])
-	current_map[NOTES].append({incoming_input.as_text() : time_stamp - current_map[OFFSET]})
+func read_input(incoming_input : StringName, time_stamp : float) -> void:
+	print("%s - %f" % [incoming_input, time_stamp])
+	current_map[NOTES].append({incoming_input : time_stamp - current_map[OFFSET]})
 
 func initialize_empty_slate() -> Dictionary:
 	return {

@@ -12,18 +12,21 @@ extends BoxContainer
 # Playback bar
 @onready var playback : HSlider = $Control/Dashboard/MarginContainer/Contents/Player/HSlider
 @onready var timer : Label = $Control/Dashboard/MarginContainer/Contents/Player/Controls/Timer
-@onready var select_music : Button = $Control/Dashboard/MarginContainer/Contents/BoxContainer/SelectMusic
-@onready var input : SpinBox = $Control/Dashboard/MarginContainer/Contents/BoxContainer/Offset/Input
+@onready var select_music : Button = $Control/Dashboard/MarginContainer/Contents/BoxContainer/BoxContainer/SelectMusic
+@onready var input : SpinBox = $Control/Dashboard/MarginContainer/Contents/BoxContainer/BoxContainer/Offset/Input
 
 var dialog : EditorFileDialog
 var default_select_music_title : String
 var paused_pos : float
+var target_binds : Array[StringName]
 
 func _enter_tree() -> void:
 	default_select_music_title = "Select Music..."
 
-func _input(event : InputEvent) -> void:
-	RhythmComposer.read_input(event, music_player.get_playback_position())
+	for action in InputMap.get_actions():
+		var is_built_in : bool = action.contains("ui") || action.contains("spatial_editor")
+		if not InputMap.action_get_events(action).is_empty() and not is_built_in:
+			target_binds.append(action)
 
 #Input Binding
 func _on_clear_composer_pressed() -> void:
@@ -76,6 +79,11 @@ func _process(_delta : float) -> void:
 		paused_pos = playback.value
 	if music_player.stream:
 		playback.max_value = music_player.stream.get_length()
+
+	for action in InputMap.get_actions():
+		if Input.is_action_just_pressed(action):
+			RhythmComposer.read_input(action, music_player.get_playback_position())
+			return
 
 # Dialog Logic
 func initialize_file_dialog(mode : EditorFileDialog.FileMode, on_file_select : Callable, filter : String = "", filter_name : String = "") -> EditorFileDialog:
