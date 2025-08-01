@@ -20,7 +20,16 @@ func load_from_file(path : String) -> void:
 	var json := JSON.new()
 	var error := json.parse(data)
 	if error == OK:
-		current_map = json.data
+		current_map = json.data as Dictionary
+		if not current_map.has(OFFSET):
+			current_map[OFFSET] = 0
+		if not current_map.has(MUSIC):
+			current_map[MUSIC] = null
+		if not current_map.has(NOTES):
+			current_map[NOTES] = []
+		if not current_map.has(NAME):
+			current_map[NAME] = "new_map"
+		print("loaded map - %s" % path)
 	else:
 		printerr("Failed to load file at [%s]" % path)
 

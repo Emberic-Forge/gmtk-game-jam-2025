@@ -13,6 +13,7 @@ extends BoxContainer
 @onready var playback : HSlider = $Control/Dashboard/MarginContainer/Contents/Player/HSlider
 @onready var timer : Label = $Control/Dashboard/MarginContainer/Contents/Player/Controls/Timer
 @onready var select_music : Button = $Control/Dashboard/MarginContainer/Contents/BoxContainer/SelectMusic
+@onready var input : SpinBox = $Control/Dashboard/MarginContainer/Contents/BoxContainer/Offset/Input
 
 var dialog : EditorFileDialog
 var default_select_music_title : String
@@ -25,7 +26,7 @@ func _input(event : InputEvent) -> void:
 	RhythmComposer.read_input(event, music_player.get_playback_position())
 
 #Input Binding
-func _on_clear_composer_pressed():
+func _on_clear_composer_pressed() -> void:
 	RhythmComposer.clear_current_map()
 	select_music.text = default_select_music_title
 	music_player.stream = null
@@ -33,17 +34,21 @@ func _on_clear_composer_pressed():
 	paused_pos = 0
 	timer.text = "%02d:%02d" % [0, 0]
 
-func _on_load_map_pressed():
+func _on_load_map_pressed() -> void:
 	initialize_file_dialog(EditorFileDialog.FileMode.FILE_MODE_OPEN_FILE, on_confirmed_file_load, "*.json", "Json")
 
-func _on_save_map_pressed():
+func _on_save_map_pressed() -> void:
 	initialize_file_dialog(EditorFileDialog.FileMode.FILE_MODE_SAVE_FILE, on_confirmed_file_save, "*.json", "Json")
 
-func _on_record_toggled(toggled_on):
+func _on_record_toggled(toggled_on : bool) -> void:
 	RhythmComposer.is_currently_recording = toggled_on
 
-func _on_select_music_pressed():
+func _on_select_music_pressed() -> void:
 	initialize_file_dialog(EditorFileDialog.FileMode.FILE_MODE_OPEN_FILE, on_music_selected, "*.wav, *.mp3, *.ogg", "Audio")
+
+
+func _on_input_value_changed(value : float) -> void:
+	RhythmComposer.set_map_offset(value)
 
 func _on_play_pressed():
 	if music_player.stream:
@@ -96,6 +101,8 @@ func on_confirmed_file_load(file_name : String) -> void:
 	var clip = RhythmComposer.get_map_music()
 	music_player.stream = clip
 	select_music.text = RhythmComposer.get_map_music_path()
+	input.text = "%02d" % RhythmComposer.get_map_offset()
+
 	playback.value = 0
 	paused_pos = 0
 	timer.text = "%02d:%02d" % [0, 0]
