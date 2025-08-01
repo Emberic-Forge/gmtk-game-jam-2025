@@ -28,7 +28,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/rhythm_level_editor/plugin.cfg")
 
 [input]
 
