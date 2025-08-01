@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bfpcbgtedt8aw"]
+
+[ext_resource type="StyleBox" uid="uid://d0tlcvj8jvst2" path="res://addons/rhythm_level_editor/styles/flat_color.tres" id="1_kgovu"]
+[ext_resource type="StyleBox" uid="uid://dajxaew7b6x2" path="res://addons/rhythm_level_editor/styles/transparent.tres" id="2_d3ica"]
+
+[resource]
+Button/styles/hover = ExtResource("1_kgovu")
+Button/styles/normal = ExtResource("2_d3ica")
+Button/styles/pressed = ExtResource("1_kgovu")
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 8
+PanelContainer/styles/panel = ExtResource("2_d3ica")

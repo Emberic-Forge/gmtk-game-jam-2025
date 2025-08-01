@@ -5,6 +5,7 @@ const NAME = "name"
 const NOTES = "notes"
 const MUSIC = "music"
 const OFFSET = "offset"
+const BPM = "bpm"
 
 var current_map : Dictionary
 var is_currently_recording : bool
@@ -21,14 +22,8 @@ func load_from_file(path : String) -> void:
 	var error := json.parse(data)
 	if error == OK:
 		current_map = json.data as Dictionary
-		if not current_map.has(OFFSET):
-			current_map[OFFSET] = 0
-		if not current_map.has(MUSIC):
-			current_map[MUSIC] = null
-		if not current_map.has(NOTES):
-			current_map[NOTES] = []
-		if not current_map.has(NAME):
-			current_map[NAME] = "new_map"
+		verify_map()
+
 		print("loaded map - %s" % path)
 	else:
 		printerr("Failed to load file at [%s]" % path)
@@ -39,7 +34,7 @@ func save_to_file(path : String) -> void:
 	file.store_string(json_data)
 
 func clear_current_map() -> void:
-	current_map = {}
+	current_map = initialize_empty_slate()
 
 func play_map(prepare_input : Callable) -> void:
 	pass
@@ -57,6 +52,9 @@ func get_map_music() -> AudioStream:
 func get_map_music_path() -> String:
 	return current_map[MUSIC]
 
+func get_map_bpm() -> int:
+	return current_map[BPM]
+
 #Setters
 func set_map_name(new_name : String) -> void:
 	current_map[NAME] = new_name
@@ -67,7 +65,12 @@ func set_map_offset(new_value : float) -> void:
 func set_map_music(path : String) -> void:
 	current_map[MUSIC] = path
 
+func set_map_bpm(new_value : int) -> void:
+	current_map[BPM] = new_value
+
 func read_input(incoming_input : StringName, time_stamp : float) -> void:
+	if !is_currently_recording:
+		return
 	print("%s - %f" % [incoming_input, time_stamp])
 	current_map[NOTES].append({incoming_input : time_stamp - current_map[OFFSET]})
 
@@ -77,4 +80,21 @@ func initialize_empty_slate() -> Dictionary:
 		NOTES : [],
 		MUSIC : null,
 		OFFSET : 0,
+		BPM : 60,
 	}
+
+func verify_map() -> void:
+	if not current_map.has(OFFSET):
+		current_map[OFFSET] = 0
+
+	if not current_map.has(MUSIC):
+		current_map[MUSIC] = null
+
+	if not current_map.has(NOTES):
+		current_map[NOTES] = []
+
+	if not current_map.has(NAME):
+		current_map[NAME] = "new_map"
+
+	if not current_map.has(BPM):
+		current_map[BPM] = 60

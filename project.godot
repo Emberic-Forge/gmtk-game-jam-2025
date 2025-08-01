@@ -21,7 +21,8 @@ LoadingSystem="*res://globals/loading_system/loading_system.tscn"
 KeyPersistence="*res://globals/key_persistence/scripts/key_persistence.gd"
 PauseSystem="*res://globals/pause_system/pause_system.tscn"
 Blackboard="*res://globals/blackboard/blackboard.tscn"
-RhythmComposer="*res://addons/rhythm_level_editor/map_composer.gd"
+RhythmComposer="*res://addons/rhythm_level_editor/scripts/map_composer.gd"
+ExtendedWindows="*res://addons/rhythm_level_editor/scripts/dialog_manager.gd"
 
 [display]
 
@@ -29,6 +30,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
+disabled=PackedStringArray("res://addons/rhythm_level_editor/plugin.cfg")
 enabled=PackedStringArray("res://addons/rhythm_level_editor/plugin.cfg")
 
 [input]
