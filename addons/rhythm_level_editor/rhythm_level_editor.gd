@@ -12,6 +12,7 @@ func _enter_tree():
 
 func _exit_tree():
 	if ins:
+		EditorInterface.get_editor_main_screen().remove_child(ins)
 		ins.queue_free()
 
 
