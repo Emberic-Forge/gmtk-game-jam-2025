@@ -1,13 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://yhwaoqt5mhex"]
+[gd_scene load_steps=11 format=3 uid="uid://yhwaoqt5mhex"]
 
 [ext_resource type="Script" uid="uid://c528teifxp01n" path="res://SleepingMinigame/sleeping_minigame.gd" id="1_f262o"]
 [ext_resource type="Texture2D" uid="uid://b8omcrlyaw1eq" path="res://SleepingMinigame/Assets/Art/Sleeping.png" id="1_mi72b"]
-[ext_resource type="Texture2D" uid="uid://d2nhsj7jsbt7n" path="res://SleepingMinigame/Assets/Art/Waking.png" id="2_qw63a"]
-[ext_resource type="Texture2D" uid="uid://dx43o0et61yom" path="res://SleepingMinigame/Assets/Art/TryWaking.png" id="4_mmbjb"]
+[ext_resource type="Texture2D" uid="uid://dx43o0et61yom" path="res://SleepingMinigame/Assets/Art/Waking.png" id="2_qw63a"]
+[ext_resource type="Texture2D" uid="uid://c6qsfn2nci8jy" path="res://SleepingMinigame/Assets/Art/HalfSleep.png" id="4_mmbjb"]
+[ext_resource type="Texture2D" uid="uid://d2nhsj7jsbt7n" path="res://SleepingMinigame/Assets/Art/Awake.png" id="5_7nl2x"]
 [ext_resource type="AudioStream" uid="uid://b6nk50ubjt004" path="res://SleepingMinigame/Assets/Audio/snare.mp3" id="5_8opoy"]
 [ext_resource type="AudioStream" uid="uid://88m08qo5k46x" path="res://SleepingMinigame/Assets/Audio/Press.mp3" id="6_5b0xa"]
 [ext_resource type="Texture2D" uid="uid://j6aq0xpq2m60" path="res://SleepingMinigame/Assets/Art/Untitled.png" id="7_5b0xa"]
 [ext_resource type="Script" uid="uid://cnmt5jy5sd8p4" path="res://RhythmPrototype/FadingSprite.gd" id="8_mmbjb"]
+[ext_resource type="Texture2D" uid="uid://yqla2m7l3261" path="res://SleepingMinigame/Assets/Art/WakeUpMessages.png" id="10_wle36"]
 
 [node name="SleepingMinigame" type="Node2D" node_paths=PackedStringArray("press_audio", "snare_audio")]
 script = ExtResource("1_f262o")
@@ -16,7 +18,7 @@ snare_audio = NodePath("SnarePlayer")
 sleep_texture = ExtResource("1_mi72b")
 waking_texture = ExtResource("2_qw63a")
 half_sleep_texture = ExtResource("4_mmbjb")
-awake_texture = ExtResource("2_qw63a")
+awake_texture = ExtResource("5_7nl2x")
 
 [node name="SnarePlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_8opoy")
@@ -33,9 +35,9 @@ script = ExtResource("8_mmbjb")
 
 [node name="WakingProgress" type="RichTextLabel" parent="."]
 offset_left = 440.0
-offset_top = 48.0
+offset_top = 112.0
 offset_right = 712.0
-offset_bottom = 88.0
+offset_bottom = 152.0
 text = "/100"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -44,3 +46,40 @@ vertical_alignment = 1
 position = Vector2(576, 432)
 scale = Vector2(2.18, 2.18)
 texture = ExtResource("1_mi72b")
+
+[node name="WakeUpSprites" type="Node" parent="."]
+
+[node name="WakeUp1" type="Sprite2D" parent="WakeUpSprites"]
+visible = false
+position = Vector2(328, 432)
+scale = Vector2(2.36667, 2.36667)
+texture = ExtResource("10_wle36")
+region_enabled = true
+region_rect = Rect2(0, 0, 84.1143, 30.9859)
+script = ExtResource("8_mmbjb")
+
+[node name="WakeUp2" type="Sprite2D" parent="WakeUpSprites"]
+visible = false
+position = Vector2(864, 248)
+scale = Vector2(2.36667, 2.36667)
+texture = ExtResource("10_wle36")
+region_enabled = true
+region_rect = Rect2(93.3442, 0.462231, 203.567, 30.535)
+script = ExtResource("8_mmbjb")
+
+[node name="WakeUp3" type="Sprite2D" parent="WakeUpSprites"]
+visible = false
+position = Vector2(376, 264)
+scale = Vector2(2.36667, 2.36667)
+texture = ExtResource("10_wle36")
+region_enabled = true
+region_rect = Rect2(-0.355637, 35.0858, 85.1842, 26.6842)
+script = ExtResource("8_mmbjb")
+
+[node name="WakeUp1" type="Sprite2D" parent="."]
+position = Vector2(576, 72)
+scale = Vector2(2.36667, 2.36667)
+texture = ExtResource("10_wle36")
+region_enabled = true
+region_rect = Rect2(0, 0, 84.1143, 30.9859)
+script = ExtResource("8_mmbjb")

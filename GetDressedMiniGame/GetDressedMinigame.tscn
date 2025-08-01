@@ -1,0 +1,268 @@
+[gd_scene load_steps=12 format=3 uid="uid://drwf0yhcmrw3e"]
+
+[ext_resource type="Script" uid="uid://d3vbj0le2ths2" path="res://GetDressedMiniGame/get_dressed_minigame.gd" id="1_yhpp4"]
+[ext_resource type="Texture2D" uid="uid://ba63q22iyuxtb" path="res://GetDressedMiniGame/Assets/Art/Background.png" id="1_ytwik"]
+[ext_resource type="Texture2D" uid="uid://bu3bdt2up68ra" path="res://GetDressedMiniGame/Assets/Art/Man.png" id="2_7a3du"]
+[ext_resource type="Texture2D" uid="uid://bn40t34s2xsqr" path="res://GetDressedMiniGame/Assets/Art/ClothingSheet.png" id="4_4nps2"]
+[ext_resource type="Script" uid="uid://dcm5va7h2unsr" path="res://GetDressedMiniGame/clickable_clothing.gd" id="4_mgmq7"]
+[ext_resource type="Script" uid="uid://cqa3gyg0wvhmq" path="res://GetDressedMiniGame/equipped_clothing.gd" id="6_mgmq7"]
+[ext_resource type="Texture2D" uid="uid://cu34ensjg3fow" path="res://GetDressedMiniGame/Assets/Art/Success.png" id="7_iiie5"]
+[ext_resource type="Texture2D" uid="uid://dab8rgduwtv1i" path="res://GetDressedMiniGame/Assets/Art/ClothesList.png" id="7_ndm7u"]
+[ext_resource type="Texture2D" uid="uid://d1oe67r70siky" path="res://GetDressedMiniGame/Assets/Art/Failure.png" id="8_kw3n4"]
+[ext_resource type="AudioStream" uid="uid://88m08qo5k46x" path="res://SleepingMinigame/Assets/Audio/Press.mp3" id="10_a5ku2"]
+[ext_resource type="AudioStream" uid="uid://b6nk50ubjt004" path="res://SleepingMinigame/Assets/Audio/snare.mp3" id="11_r4pjy"]
+
+[node name="GetDressedMiniGame" type="Node2D" node_paths=PackedStringArray("press_audio", "snare_audio")]
+script = ExtResource("1_yhpp4")
+press_audio = NodePath("PressAudio")
+snare_audio = NodePath("SnareAudio")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(576, 320)
+scale = Vector2(3, 3)
+texture = ExtResource("1_ytwik")
+
+[node name="Man" type="Sprite2D" parent="."]
+position = Vector2(576.5, 320)
+scale = Vector2(3, 3)
+texture = ExtResource("2_7a3du")
+
+[node name="Underpants" type="Sprite2D" parent="Man"]
+position = Vector2(-84.1667, 29.3333)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(8.93445, 117.312, 30.1425, 21.7306)
+script = ExtResource("6_mgmq7")
+
+[node name="Socks" type="Sprite2D" parent="Man"]
+position = Vector2(-83.1667, 85.6667)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(11.2053, 89.6601, 31.8949, 17.8752)
+script = ExtResource("6_mgmq7")
+clothing_id = 1
+
+[node name="Trousers" type="Sprite2D" parent="Man"]
+position = Vector2(-84.5, 50.3333)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(11.5558, -0.416829, 33.9979, 69.7483)
+script = ExtResource("6_mgmq7")
+clothing_id = 2
+
+[node name="Shirt" type="Sprite2D" parent="Man"]
+position = Vector2(-83.1667, -0.666672)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(86.211, 5.54157, 63.0889, 59.9344)
+script = ExtResource("6_mgmq7")
+clothing_id = 3
+
+[node name="Belt" type="Sprite2D" parent="Man"]
+position = Vector2(-84.1667, 21.3333)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(99.5298, 86.9988, 31.194, 13.3188)
+script = ExtResource("6_mgmq7")
+clothing_id = 4
+
+[node name="Vest" type="Sprite2D" parent="Man"]
+position = Vector2(-84.1667, -6.33334)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(9.10234, 149.595, 35.0494, 42.7603)
+script = ExtResource("6_mgmq7")
+clothing_id = 5
+
+[node name="ClothingButtons" type="Node" parent="."]
+
+[node name="UnderpantsArea" type="Area2D" parent="ClothingButtons"]
+position = Vector2(624, 584)
+script = ExtResource("4_mgmq7")
+
+[node name="Underpants" type="Sprite2D" parent="ClothingButtons/UnderpantsArea"]
+scale = Vector2(3, 3)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(248.576, 137.059, 24.8828, 20.6005)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClothingButtons/UnderpantsArea"]
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(-0.441391, -8.30023, -11.4414, -4.30023, -12.4414, -4.30023, -8.44139, 8.69977, -8.44139, 9.69977, 3.55861, 9.69977, 7.55861, 9.69977, 10.5586, -1.30023, 10.5586, -4.30023, -0.441391, -9.30023)
+
+[node name="SocksArea" type="Area2D" parent="ClothingButtons"]
+position = Vector2(472, 536)
+script = ExtResource("4_mgmq7")
+clothing_zone = 1
+clothing_id = 1
+
+[node name="Socks" type="Sprite2D" parent="ClothingButtons/SocksArea"]
+scale = Vector2(3, 3)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(193.276, 92.4935, 19.5866, 18.0039)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClothingButtons/SocksArea"]
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(-3.79331, -7.00193, -9.79331, -0.00193024, -9.79331, 3.99807, -0.793312, 7.99807, -0.793312, 8.99807, 8.20669, 4.99807, 9.20669, 4.99807, 9.20669, -3.00193, -3.79331, -8.00193)
+
+[node name="TrousersArea" type="Area2D" parent="ClothingButtons"]
+position = Vector2(760, 488)
+script = ExtResource("4_mgmq7")
+clothing_zone = 2
+clothing_id = 2
+
+[node name="Trousers" type="Sprite2D" parent="ClothingButtons/TrousersArea"]
+scale = Vector2(3, 3)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(182.555, 23.1066, 31.0731, 39.4997)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClothingButtons/TrousersArea"]
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(-1.53654, -18.7498, -13.5365, -4.74984, -14.5365, -4.74984, -11.5365, 18.2502, -11.5365, 19.2502, 13.4635, 17.2502, 14.4635, 17.2502, 14.4635, -8.74984, 15.4635, -8.74984, 13.4635, -16.7498, 13.4635, -17.7498, -1.53654, -19.7498)
+
+[node name="ShirtArea" type="Area2D" parent="ClothingButtons"]
+position = Vector2(488, 400)
+script = ExtResource("4_mgmq7")
+clothing_zone = 3
+clothing_id = 3
+
+[node name="Shirt" type="Sprite2D" parent="ClothingButtons/ShirtArea"]
+scale = Vector2(3, 3)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(232.484, 70.9324, 49.243, 26.3595)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClothingButtons/ShirtArea"]
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(-20.6215, -11.1797, -24.6215, -8.17973, -24.6215, -3.17973, -14.6215, 1.82027, -12.6215, 1.82027, -9.62148, 11.8203, -9.62148, 12.8203, 9.37852, 12.8203, 10.3785, 11.8203, 10.3785, 4.82027, 23.3785, 1.82027, 24.3785, 1.82027, 21.3785, -7.17973, 21.3785, -8.17973, -20.6215, -12.1797)
+
+[node name="BeltArea" type="Area2D" parent="ClothingButtons"]
+position = Vector2(496, 400)
+script = ExtResource("4_mgmq7")
+clothing_zone = 4
+clothing_id = 4
+
+[node name="Belt" type="Sprite2D" parent="ClothingButtons/BeltArea"]
+position = Vector2(72, 48)
+scale = Vector2(3, 3)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(193.159, 118.104, 33.8907, 52.1396)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClothingButtons/BeltArea"]
+position = Vector2(72, 48)
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(11.0546, -22.0698, -15.9454, 2.93021, -16.9454, 2.93021, -14.9454, 25.9302, -5.94536, 25.9302, -5.94536, 12.9302, -5.94536, 6.93021, 15.0546, -13.0698, 16.0546, -13.0698, 11.0546, -23.0698)
+
+[node name="VestArea" type="Area2D" parent="ClothingButtons"]
+position = Vector2(696, 408)
+script = ExtResource("4_mgmq7")
+clothing_zone = 5
+clothing_id = 5
+
+[node name="Vest" type="Sprite2D" parent="ClothingButtons/VestArea"]
+scale = Vector2(3, 3)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(223.285, 36.4186, 22.3041, 20.5662)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ClothingButtons/VestArea"]
+scale = Vector2(3, 3)
+polygon = PackedVector2Array(-2.15207, -8.28308, -10.1521, -0.283085, -11.1521, -0.283085, -8.15207, 5.71692, -8.15207, 6.71692, -0.152069, 9.71692, 5.84793, 9.71692, 9.84793, 2.71692, 10.8479, 2.71692, 9.84793, -6.28308, 9.84793, -7.28308, -2.15207, -9.28308)
+
+[node name="ClothesList" type="Node" parent="."]
+
+[node name="UnderPantsLabel" type="Sprite2D" parent="ClothesList"]
+modulate = Color(1, 1, 1, 0.329412)
+position = Vector2(809, 57)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ndm7u")
+region_enabled = true
+region_rect = Rect2(-2.31793, -7.669, 644.204, 134.431)
+script = ExtResource("6_mgmq7")
+
+[node name="SocksLabel" type="Sprite2D" parent="ClothesList"]
+modulate = Color(1, 1, 1, 0.329412)
+position = Vector2(745, 98)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ndm7u")
+region_enabled = true
+region_rect = Rect2(12.718, 107.483, 362.032, 131.769)
+script = ExtResource("6_mgmq7")
+clothing_id = 1
+
+[node name="PantsLabel" type="Sprite2D" parent="ClothesList"]
+modulate = Color(1, 1, 1, 0.329412)
+position = Vector2(745, 154)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ndm7u")
+region_enabled = true
+region_rect = Rect2(20.532, 241.756, 372.68, 117.128)
+script = ExtResource("6_mgmq7")
+clothing_id = 2
+
+[node name="ShirtLabel" type="Sprite2D" parent="ClothesList"]
+modulate = Color(1, 1, 1, 0.329412)
+position = Vector2(746, 214)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ndm7u")
+region_enabled = true
+region_rect = Rect2(17.87, 357.553, 384.659, 118.459)
+script = ExtResource("6_mgmq7")
+clothing_id = 3
+
+[node name="BeltLabel" type="Sprite2D" parent="ClothesList"]
+modulate = Color(1, 1, 1, 0.329412)
+position = Vector2(746, 271)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ndm7u")
+region_enabled = true
+region_rect = Rect2(8.55304, 477.343, 383.328, 122.452)
+script = ExtResource("6_mgmq7")
+clothing_id = 4
+
+[node name="VestLabel" type="Sprite2D" parent="ClothesList"]
+modulate = Color(1, 1, 1, 0.329412)
+position = Vector2(746, 328)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_ndm7u")
+region_enabled = true
+region_rect = Rect2(28.518, 594.471, 324.764, 117.128)
+script = ExtResource("6_mgmq7")
+clothing_id = 5
+
+[node name="Success" type="Sprite2D" parent="."]
+visible = false
+z_index = 13
+position = Vector2(567, 310)
+texture = ExtResource("7_iiie5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Success"]
+offset_left = -17.0
+offset_top = 15.0
+offset_right = 191.0
+offset_bottom = 126.0
+text = "SUCCESS"
+
+[node name="Failure" type="Sprite2D" parent="."]
+visible = false
+z_index = 10
+position = Vector2(581, 318)
+texture = ExtResource("8_kw3n4")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Failure"]
+offset_left = -333.0
+offset_top = -86.0
+offset_right = -125.0
+offset_bottom = 25.0
+scale = Vector2(3.16, 3.8)
+text = "OH GOD WHAT AM I DOING"
+horizontal_alignment = 1
+
+[node name="PressAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_a5ku2")
+
+[node name="SnareAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_r4pjy")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx43o0et61yom"
-path="res://.godot/imported/TryWaking.png-5ad4e2259f8ce8a37f814bcdc1985ca6.ctex"
+uid="uid://d1oe67r70siky"
+path="res://.godot/imported/Failure.png-20756a73ed2b31baa78230bca691bec3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SleepingMinigame/Assets/Art/TryWaking.png"
-dest_files=["res://.godot/imported/TryWaking.png-5ad4e2259f8ce8a37f814bcdc1985ca6.ctex"]
+source_file="res://GetDressedMiniGame/Assets/Art/Failure.png"
+dest_files=["res://.godot/imported/Failure.png-20756a73ed2b31baa78230bca691bec3.ctex"]
 
 [params]
 

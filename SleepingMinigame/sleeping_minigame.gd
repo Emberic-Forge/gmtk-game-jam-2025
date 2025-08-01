@@ -14,6 +14,8 @@ extends Node2D
 var current_time = 0
 var waking_progress = 0
 
+var wake_up_index = 0
+
 var success = false
 
 func _process( delta ):
@@ -32,6 +34,14 @@ func _process( delta ):
 	if ( waking_progress >= 100 ):
 		success = true
 		$Character.texture = awake_texture
+		await get_tree().create_timer(1).timeout
+		$Character.texture = sleep_texture
+		await get_tree().create_timer(0.5).timeout
+		$Character.texture = awake_texture
+		await get_tree().create_timer(1).timeout
+		$Character.texture = sleep_texture
+		await get_tree().create_timer(0.5).timeout
+		$Character.texture = awake_texture
 		$WakingProgress.text = "AWAKE!"
 	else:
 		$WakingProgress.text = "%d/100" % waking_progress
@@ -43,7 +53,16 @@ func _process( delta ):
 
 func _trigger_awake():
 	$Character.texture = waking_texture
-	$WakeUpText.Show()
+	var wake_up_sprites = $WakeUpSprites.get_children()
+	
+	var rand = 0
+	while true :
+		rand = randi_range( 0, wake_up_sprites.size() - 1 )
+		if ( rand != wake_up_index ):
+			break
+	wake_up_sprites[rand].Show()
+	wake_up_index = rand
+	
 	_shake_sprite()
 	await get_tree().create_timer(0.4).timeout
 	if ( waking_progress < 50):
