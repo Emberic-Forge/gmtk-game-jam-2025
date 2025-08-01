@@ -1,0 +1,219 @@
+[gd_scene load_steps=11 format=3 uid="uid://d2olj4hggpetj"]
+
+[ext_resource type="Script" uid="uid://bs0h23gu77emd" path="res://addons/rhythm_level_editor/editor_window.gd" id="1_4f6ym"]
+[ext_resource type="Texture2D" uid="uid://dlal3gnhq24ta" path="res://addons/rhythm_level_editor/icons/font_awesome/stop-solid-full.svg" id="2_bgpjc"]
+[ext_resource type="Texture2D" uid="uid://cipww18wehbaa" path="res://addons/rhythm_level_editor/icons/font_awesome/play-solid-full.svg" id="3_qhxlw"]
+[ext_resource type="Texture2D" uid="uid://p2orbproymka" path="res://addons/rhythm_level_editor/icons/font_awesome/pause-solid-full.svg" id="4_xmmqw"]
+[ext_resource type="Texture2D" uid="uid://rausk0ryahco" path="res://addons/rhythm_level_editor/icons/font_awesome/circle-regular-full.svg" id="5_yujx3"]
+[ext_resource type="Texture2D" uid="uid://dvfyppaqr78xj" path="res://addons/rhythm_level_editor/icons/font_awesome/circle-solid-full.svg" id="6_gssui"]
+[ext_resource type="Texture2D" uid="uid://du7h5pupkbeti" path="res://addons/rhythm_level_editor/icons/font_awesome/trash-can-solid-full.svg" id="7_me0fa"]
+[ext_resource type="Texture2D" uid="uid://ck7gxfsxa0gfc" path="res://addons/rhythm_level_editor/icons/font_awesome/folder-solid-full.svg" id="8_x4alb"]
+[ext_resource type="Texture2D" uid="uid://ccxhaq2q50to1" path="res://addons/rhythm_level_editor/icons/font_awesome/floppy-disk-solid-full.svg" id="9_ruvwa"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_66pr8"]
+
+[node name="EditorWindow" type="BoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+vertical = true
+script = ExtResource("1_4f6ym")
+
+[node name="MainView" type="BoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.43
+alignment = 1
+
+[node name="Label" type="Label" parent="MainView"]
+layout_mode = 2
+text = "Input 1"
+
+[node name="Label2" type="Label" parent="MainView"]
+layout_mode = 2
+text = "Input 1"
+
+[node name="Label3" type="Label" parent="MainView"]
+layout_mode = 2
+text = "Input 1"
+
+[node name="Label4" type="Label" parent="MainView"]
+layout_mode = 2
+text = "Input 1"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.56
+stretch = true
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(2, 2)
+size_2d_override_stretch = true
+render_target_update_mode = 0
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+position = Vector2(576, 324)
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/Camera2D"]
+position = Vector2(-284, -169)
+scale = Vector2(122, 96)
+texture = SubResource("PlaceholderTexture2D_66pr8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Camera2D"]
+position = Vector2(-186, 144)
+scale = Vector2(122, 96)
+texture = SubResource("PlaceholderTexture2D_66pr8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="SubViewportContainer/SubViewport/Camera2D"]
+position = Vector2(288, -128)
+scale = Vector2(122, 96)
+texture = SubResource("PlaceholderTexture2D_66pr8")
+
+[node name="Sprite2D4" type="Sprite2D" parent="SubViewportContainer/SubViewport/Camera2D"]
+position = Vector2(171, 98)
+scale = Vector2(122, 96)
+texture = SubResource("PlaceholderTexture2D_66pr8")
+
+[node name="Control" type="BoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Dashboard" type="PanelContainer" parent="Control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.74
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Dashboard"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Contents" type="BoxContainer" parent="Control/Dashboard/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+vertical = true
+
+[node name="BoxContainer" type="BoxContainer" parent="Control/Dashboard/MarginContainer/Contents"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="SelectMusic" type="Button" parent="Control/Dashboard/MarginContainer/Contents/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.19
+text = "Select Music.."
+
+[node name="Player" type="BoxContainer" parent="Control/Dashboard/MarginContainer/Contents"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 2
+vertical = true
+
+[node name="Controls" type="BoxContainer" parent="Control/Dashboard/MarginContainer/Contents/Player"]
+layout_mode = 2
+alignment = 1
+
+[node name="Timer" type="Label" parent="Control/Dashboard/MarginContainer/Contents/Player/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "00:00"
+horizontal_alignment = 1
+
+[node name="Spacing" type="Control" parent="Control/Dashboard/MarginContainer/Contents/Player/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="Stop" type="Button" parent="Control/Dashboard/MarginContainer/Contents/Player/Controls"]
+layout_mode = 2
+action_mode = 0
+icon = ExtResource("2_bgpjc")
+flat = true
+
+[node name="Play" type="Button" parent="Control/Dashboard/MarginContainer/Contents/Player/Controls"]
+layout_mode = 2
+action_mode = 0
+icon = ExtResource("3_qhxlw")
+flat = true
+
+[node name="Pause" type="Button" parent="Control/Dashboard/MarginContainer/Contents/Player/Controls"]
+layout_mode = 2
+action_mode = 0
+icon = ExtResource("4_xmmqw")
+flat = true
+
+[node name="Record" type="TextureButton" parent="Control/Dashboard/MarginContainer/Contents/Player/Controls"]
+layout_mode = 2
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("5_yujx3")
+texture_pressed = ExtResource("6_gssui")
+stretch_mode = 3
+
+[node name="Spacing2" type="Control" parent="Control/Dashboard/MarginContainer/Contents/Player/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.5
+
+[node name="HSlider" type="HSlider" parent="Control/Dashboard/MarginContainer/Contents/Player"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Main Buttons" type="BoxContainer" parent="Control"]
+layout_mode = 2
+vertical = true
+
+[node name="Clear Composer" type="Button" parent="Control/Main Buttons"]
+layout_mode = 2
+tooltip_text = "Clear Map"
+action_mode = 0
+icon = ExtResource("7_me0fa")
+flat = true
+icon_alignment = 1
+
+[node name="Load Map" type="Button" parent="Control/Main Buttons"]
+layout_mode = 2
+tooltip_text = "Load Map"
+action_mode = 0
+icon = ExtResource("8_x4alb")
+flat = true
+icon_alignment = 1
+
+[node name="Save Map" type="Button" parent="Control/Main Buttons"]
+layout_mode = 2
+tooltip_text = "Save Map"
+action_mode = 0
+icon = ExtResource("9_ruvwa")
+flat = true
+icon_alignment = 1
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="Control/Dashboard/MarginContainer/Contents/BoxContainer/SelectMusic" to="." method="_on_select_music_pressed"]
+[connection signal="pressed" from="Control/Dashboard/MarginContainer/Contents/Player/Controls/Stop" to="." method="_on_stop_pressed"]
+[connection signal="pressed" from="Control/Dashboard/MarginContainer/Contents/Player/Controls/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/Dashboard/MarginContainer/Contents/Player/Controls/Pause" to="." method="_on_pause_pressed"]
+[connection signal="toggled" from="Control/Dashboard/MarginContainer/Contents/Player/Controls/Record" to="." method="_on_record_toggled"]
+[connection signal="pressed" from="Control/Main Buttons/Clear Composer" to="." method="_on_clear_composer_pressed"]
+[connection signal="pressed" from="Control/Main Buttons/Load Map" to="." method="_on_load_map_pressed"]
+[connection signal="pressed" from="Control/Main Buttons/Save Map" to="." method="_on_save_map_pressed"]

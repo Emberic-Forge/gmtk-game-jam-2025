@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ddk4kb5tel8jt"
+path="res://.godot/imported/oh deer, my beer(2)(1).wav-addb1788d6466fad29ee16e358ab8615.sample"
+
+[deps]
+
+source_file="res://gameplay/audio/music/oh deer, my beer(2)(1).wav"
+dest_files=["res://.godot/imported/oh deer, my beer(2)(1).wav-addb1788d6466fad29ee16e358ab8615.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

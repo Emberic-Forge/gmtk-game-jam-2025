@@ -21,6 +21,7 @@ LoadingSystem="*res://globals/loading_system/loading_system.tscn"
 KeyPersistence="*res://globals/key_persistence/scripts/key_persistence.gd"
 PauseSystem="*res://globals/pause_system/pause_system.tscn"
 Blackboard="*res://globals/blackboard/blackboard.tscn"
+RhythmComposer="*res://addons/rhythm_level_editor/map_composer.gd"
 
 [display]
 
