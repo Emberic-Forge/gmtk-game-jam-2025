@@ -5,33 +5,39 @@
 [ext_resource type="Texture2D" uid="uid://dx43o0et61yom" path="res://SleepingMinigame/Assets/Art/Waking.png" id="2_qw63a"]
 [ext_resource type="Texture2D" uid="uid://c6qsfn2nci8jy" path="res://SleepingMinigame/Assets/Art/HalfSleep.png" id="4_mmbjb"]
 [ext_resource type="Texture2D" uid="uid://d2nhsj7jsbt7n" path="res://SleepingMinigame/Assets/Art/Awake.png" id="5_7nl2x"]
-[ext_resource type="AudioStream" uid="uid://b6nk50ubjt004" path="res://SleepingMinigame/Assets/Audio/snare.mp3" id="5_8opoy"]
-[ext_resource type="AudioStream" uid="uid://88m08qo5k46x" path="res://SleepingMinigame/Assets/Audio/Press.mp3" id="6_5b0xa"]
 [ext_resource type="Texture2D" uid="uid://j6aq0xpq2m60" path="res://SleepingMinigame/Assets/Art/Untitled.png" id="7_5b0xa"]
-[ext_resource type="Script" uid="uid://cnmt5jy5sd8p4" path="res://RhythmPrototype/FadingSprite.gd" id="8_mmbjb"]
+[ext_resource type="Texture2D" uid="uid://dp3j87bd3m0os" path="res://SleepingMinigame/Assets/Art/SleepFaceTemplate.png" id="7_7nl2x"]
+[ext_resource type="Script" uid="uid://clws3dikh2vcm" path="res://GlobalAssets/rhythm_gameplay.gd" id="8_mmbjb"]
 [ext_resource type="Texture2D" uid="uid://yqla2m7l3261" path="res://SleepingMinigame/Assets/Art/WakeUpMessages.png" id="10_wle36"]
 
-[node name="SleepingMinigame" type="Node2D" node_paths=PackedStringArray("press_audio", "snare_audio")]
+[sub_resource type="GDScript" id="GDScript_7nl2x"]
+script/source = "extends Sprite2D
+
+func Show():
+	visible = true
+	var fadeInTween = get_tree().create_tween()
+	fadeInTween.tween_property( self, \"modulate:a\", 1, 0.01 )
+	await fadeInTween.finished
+	fadeInTween.kill()
+	var fadeOutTween = get_tree().create_tween()
+	fadeOutTween.tween_property( self, \"modulate:a\", 0, 0.7 )
+	await fadeOutTween.finished
+	fadeOutTween.kill()
+"
+
+[node name="SleepingMinigame" type="Node2D"]
 script = ExtResource("1_f262o")
-press_audio = NodePath("PressPlayer")
-snare_audio = NodePath("SnarePlayer")
 sleep_texture = ExtResource("1_mi72b")
 waking_texture = ExtResource("2_qw63a")
 half_sleep_texture = ExtResource("4_mmbjb")
 awake_texture = ExtResource("5_7nl2x")
-
-[node name="SnarePlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_8opoy")
-
-[node name="PressPlayer" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_5b0xa")
 
 [node name="WakeUpText" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(584, 128)
 scale = Vector2(0.447368, 0.447368)
 texture = ExtResource("7_5b0xa")
-script = ExtResource("8_mmbjb")
+script = SubResource("GDScript_7nl2x")
 
 [node name="WakingProgress" type="RichTextLabel" parent="."]
 offset_left = 440.0
@@ -45,7 +51,7 @@ vertical_alignment = 1
 [node name="Character" type="Sprite2D" parent="."]
 position = Vector2(576, 432)
 scale = Vector2(2.18, 2.18)
-texture = ExtResource("1_mi72b")
+texture = ExtResource("7_7nl2x")
 
 [node name="WakeUpSprites" type="Node" parent="."]
 
@@ -56,7 +62,7 @@ scale = Vector2(2.36667, 2.36667)
 texture = ExtResource("10_wle36")
 region_enabled = true
 region_rect = Rect2(0, 0, 84.1143, 30.9859)
-script = ExtResource("8_mmbjb")
+script = SubResource("GDScript_7nl2x")
 
 [node name="WakeUp2" type="Sprite2D" parent="WakeUpSprites"]
 visible = false
@@ -65,7 +71,7 @@ scale = Vector2(2.36667, 2.36667)
 texture = ExtResource("10_wle36")
 region_enabled = true
 region_rect = Rect2(93.3442, 0.462231, 203.567, 30.535)
-script = ExtResource("8_mmbjb")
+script = SubResource("GDScript_7nl2x")
 
 [node name="WakeUp3" type="Sprite2D" parent="WakeUpSprites"]
 visible = false
@@ -74,7 +80,7 @@ scale = Vector2(2.36667, 2.36667)
 texture = ExtResource("10_wle36")
 region_enabled = true
 region_rect = Rect2(-0.355637, 35.0858, 85.1842, 26.6842)
-script = ExtResource("8_mmbjb")
+script = SubResource("GDScript_7nl2x")
 
 [node name="WakeUp1" type="Sprite2D" parent="."]
 position = Vector2(576, 72)
@@ -82,4 +88,7 @@ scale = Vector2(2.36667, 2.36667)
 texture = ExtResource("10_wle36")
 region_enabled = true
 region_rect = Rect2(0, 0, 84.1143, 30.9859)
+script = SubResource("GDScript_7nl2x")
+
+[node name="RhythmGameplay" type="Node" parent="."]
 script = ExtResource("8_mmbjb")

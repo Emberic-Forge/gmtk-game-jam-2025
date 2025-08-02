@@ -5,38 +5,22 @@ var clothing_click_order = []
 var equipped_clothes = []
 var clothes_labels = []
 
-@export var beats_per_minute = 60
-@export var press_audio : AudioStreamPlayer2D
-@export var snare_audio : AudioStreamPlayer2D
-
-var current_time = 0
-var beat_time
-@export var success_timing = 0.05
-
 func _process( delta ):
-	current_time += delta
-	beat_time = 60.0/beats_per_minute
-	
-	if ( current_time > beat_time ):
-		snare_audio.play()
-		current_time = 0
+	pass
 
-func _ready():
+enum DirectionalInputs { UP, DOWN, LEFT, RIGHT}
+
+func process():
 	var clothing_buttons = $ClothingButtons.get_children()
 	for clothing_button in clothing_buttons:
 		clothing_button.on_clicked.connect( _on_clicked )
-	
-	clothes_labels = $ClothesList.get_children()
 	
 	equipped_clothes = $Man.get_children()
 	for equipped_clothing in equipped_clothes:
 		equipped_clothing.visible = false
 
 func _on_clicked( clothing_zone, clothing_id, clothing_node ) :
-	var offset = current_time
-	if ( current_time > (beat_time / 2.0) ):
-		offset = abs( current_time - beat_time )
-	if (offset < success_timing):
+	if ( $RhythmGameplay._perform_action() ):
 		clothing_node.visible = false
 		clothing_node.input_pickable = false
 		clothing_click_order.append(clothing_zone)
@@ -68,9 +52,6 @@ func _on_clicked( clothing_zone, clothing_id, clothing_node ) :
 				$Failure.visible = true
 	else:
 		_shake_sprite()
-		
-	press_audio.play()
-	
 
 func _shake_sprite():
 	var shakeTween = get_tree().create_tween()
