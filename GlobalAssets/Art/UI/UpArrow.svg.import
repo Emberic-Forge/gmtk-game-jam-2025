@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beys8qg0xjo0s"
-path="res://.godot/imported/keyboard_arrow_right_outline.svg-92b24a0c41d4f72abdf49dd4d457a286.ctex"
+uid="uid://83bajwkxympk"
+path="res://.godot/imported/UpArrow.svg-aca4ac60ed0d67274b7ff48b6df56b7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GlobalAssets/Art/UI/keyboard_arrow_right_outline.svg"
-dest_files=["res://.godot/imported/keyboard_arrow_right_outline.svg-92b24a0c41d4f72abdf49dd4d457a286.ctex"]
+source_file="res://GlobalAssets/Art/UI/UpArrow.svg"
+dest_files=["res://.godot/imported/UpArrow.svg-aca4ac60ed0d67274b7ff48b6df56b7e.ctex"]
 
 [params]
 

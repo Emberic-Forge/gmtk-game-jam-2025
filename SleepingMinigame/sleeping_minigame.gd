@@ -11,11 +11,27 @@ var wake_up_index = 0
 func _process( delta ):
 	if ( !$RhythmGameplay.playing ):
 		return
-		
+	
+	var valid_press = false
 	if ( Input.is_action_just_pressed("Action") ):
-		if ( $RhythmGameplay._perform_action() ):
-			_trigger_awake()
-			waking_progress += 10
+		if ( $RhythmGameplay._perform_action("Space") ):
+			valid_press = true
+	if ( Input.is_action_just_pressed("left") ):
+		if ( $RhythmGameplay._perform_action("A") ):
+			valid_press = true
+	if ( Input.is_action_just_pressed("right") ):
+		if ( $RhythmGameplay._perform_action("D") ):
+			valid_press = true
+	if ( Input.is_action_just_pressed("up") ):
+		if ( $RhythmGameplay._perform_action("W") ):
+			valid_press = true
+	if ( Input.is_action_just_pressed("down") ):
+		if ( $RhythmGameplay._perform_action("S") ):
+			valid_press = true
+			
+	if ( valid_press ):
+		_trigger_awake()
+		waking_progress += 1
 	
 	if ( waking_progress >= 100 ):
 		$RhythmGameplay.playing = false

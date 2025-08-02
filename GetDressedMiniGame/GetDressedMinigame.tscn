@@ -6,11 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bn40t34s2xsqr" path="res://GetDressedMiniGame/Assets/Art/ClothingSheet.png" id="4_4nps2"]
 [ext_resource type="Texture2D" uid="uid://cu34ensjg3fow" path="res://GetDressedMiniGame/Assets/Art/Success.png" id="7_iiie5"]
 [ext_resource type="Texture2D" uid="uid://d1oe67r70siky" path="res://GetDressedMiniGame/Assets/Art/Failure.png" id="8_kw3n4"]
-[ext_resource type="Texture2D" uid="uid://bvusbdfbhb1fb" path="res://GlobalAssets/Art/UI/keyboard_arrow_down_outline.svg" id="11_0q5ia"]
-[ext_resource type="Texture2D" uid="uid://c0v62cubt7xum" path="res://GlobalAssets/Art/UI/keyboard_arrow_left_outline.svg" id="12_5itd6"]
-[ext_resource type="Texture2D" uid="uid://beys8qg0xjo0s" path="res://GlobalAssets/Art/UI/keyboard_arrow_right_outline.svg" id="13_arrbr"]
+[ext_resource type="Texture2D" uid="uid://bvusbdfbhb1fb" path="res://GlobalAssets/Art/UI/DownArrow.svg" id="11_0q5ia"]
+[ext_resource type="Texture2D" uid="uid://c0v62cubt7xum" path="res://GlobalAssets/Art/UI/LeftArrow.svg" id="12_5itd6"]
+[ext_resource type="Texture2D" uid="uid://beys8qg0xjo0s" path="res://GlobalAssets/Art/UI/RightArrow.svg" id="13_arrbr"]
 [ext_resource type="Script" uid="uid://clws3dikh2vcm" path="res://GlobalAssets/rhythm_gameplay.gd" id="14_0q5ia"]
-[ext_resource type="Texture2D" uid="uid://83bajwkxympk" path="res://GlobalAssets/Art/UI/keyboard_arrow_up_outline.svg" id="14_l5x1w"]
+[ext_resource type="Texture2D" uid="uid://83bajwkxympk" path="res://GlobalAssets/Art/UI/UpArrow.svg" id="14_l5x1w"]
 
 [node name="GetDressedMiniGame" type="Node2D"]
 script = ExtResource("1_yhpp4")
@@ -213,3 +213,6 @@ region_rect = Rect2(223.285, 36.4186, 22.3041, 20.5662)
 
 [node name="RhythmGameplay" type="Node" parent="."]
 script = ExtResource("14_0q5ia")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(535, 246)
