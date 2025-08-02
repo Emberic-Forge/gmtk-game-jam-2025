@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhm7doef88g0r"]
+
+[ext_resource type="Script" uid="uid://cjs27bbftnemu" path="res://addons/rhythm_level_editor/scripts/mini_map.gd" id="1_hj40i"]
+
+[node name="MiniMap" type="BoxContainer"]
+vertical = true
+script = ExtResource("1_hj40i")

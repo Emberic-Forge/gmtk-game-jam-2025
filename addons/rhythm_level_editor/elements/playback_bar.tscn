@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://nj8qnyke41u7"]
+
+[ext_resource type="Texture2D" uid="uid://dlal3gnhq24ta" path="res://addons/rhythm_level_editor/icons/font_awesome/stop-solid-full.svg" id="1_eh2ph"]
+[ext_resource type="Theme" uid="uid://bfpcbgtedt8aw" path="res://addons/rhythm_level_editor/rhythm_editor_theme.tres" id="1_l1nip"]
+[ext_resource type="Texture2D" uid="uid://cipww18wehbaa" path="res://addons/rhythm_level_editor/icons/font_awesome/play-solid-full.svg" id="2_l1nip"]
+[ext_resource type="Script" uid="uid://cnsyrwsvqvt3g" path="res://addons/rhythm_level_editor/scripts/playback_bar.gd" id="2_ox8qk"]
+[ext_resource type="Texture2D" uid="uid://p2orbproymka" path="res://addons/rhythm_level_editor/icons/font_awesome/pause-solid-full.svg" id="3_ox8qk"]
+
+[node name="PlaybackBar" type="PanelContainer" node_paths=PackedStringArray("music_label", "timer", "timeline")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_l1nip")
+script = ExtResource("2_ox8qk")
+music_label = NodePath("Order/Controls/MusicLabel")
+timer = NodePath("Order/Controls/Timer")
+timeline = NodePath("Order/Timeline")
+
+[node name="Order" type="BoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+vertical = true
+
+[node name="Controls" type="BoxContainer" parent="Order"]
+layout_mode = 2
+alignment = 1
+
+[node name="Timer" type="Label" parent="Order/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+text = "00:00"
+
+[node name="MusicLabel" type="Label" parent="Order/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Insert Music Track Here"
+clip_text = true
+
+[node name="Spacing" type="Control" parent="Order/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Stop" type="Button" parent="Order/Controls"]
+layout_mode = 2
+action_mode = 0
+icon = ExtResource("1_eh2ph")
+flat = true
+
+[node name="Play" type="Button" parent="Order/Controls"]
+layout_mode = 2
+action_mode = 0
+icon = ExtResource("2_l1nip")
+flat = true
+
+[node name="Pause" type="Button" parent="Order/Controls"]
+layout_mode = 2
+action_mode = 0
+icon = ExtResource("3_ox8qk")
+flat = true
+
+[node name="Spacing2" type="Control" parent="Order/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.5
+
+[node name="Timeline" type="HSlider" parent="Order"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 0.01
+
+[connection signal="pressed" from="Order/Controls/Stop" to="." method="_on_stop_pressed"]
+[connection signal="pressed" from="Order/Controls/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Order/Controls/Pause" to="." method="_on_pause_pressed"]
+[connection signal="value_changed" from="Order/Timeline" to="." method="_on_timeline_value_changed"]

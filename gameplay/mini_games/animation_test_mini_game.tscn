@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3 uid="uid://ctbj1d7xyfguo"]
+
+[ext_resource type="Script" uid="uid://biql77ilojp7y" path="res://gameplay/mini_games/scripts/animation_test_mini_game.gd" id="1_qrqrw"]
+[ext_resource type="Animation" uid="uid://b6lca25pd0psn" path="res://gameplay/mini_games/sequences/test_sequence.res" id="2_l8v8m"]
+[ext_resource type="Texture2D" uid="uid://t7geti12imys" path="res://RhythmPrototype/Circle.png" id="3_6bov1"]
+[ext_resource type="Texture2D" uid="uid://bphristh50jf5" path="res://RhythmPrototype/Perfect.png" id="4_sf4gf"]
+[ext_resource type="Script" uid="uid://cnmt5jy5sd8p4" path="res://RhythmPrototype/FadingSprite.gd" id="5_b1sji"]
+[ext_resource type="Texture2D" uid="uid://cupp3pe1jxkmq" path="res://RhythmPrototype/OK.png" id="6_ndw1c"]
+[ext_resource type="Texture2D" uid="uid://uumld5emdw24" path="res://RhythmPrototype/Good.png" id="7_ifw81"]
+[ext_resource type="Texture2D" uid="uid://d2cci0wnye2rp" path="res://RhythmPrototype/Poor.png" id="8_5dg5e"]
+
+[sub_resource type="Animation" id="Animation_5suj7"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Core:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Core:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oq31m"]
+_data = {
+&"RESET": SubResource("Animation_5suj7"),
+&"test_sequence": ExtResource("2_l8v8m")
+}
+
+[node name="AnimationTestMiniGame" type="Node"]
+script = ExtResource("1_qrqrw")
+metadata/_custom_type_script = "uid://de0eimlsbb7lx"
+
+[node name="Sequence" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Scene")
+libraries = {
+&"": SubResource("AnimationLibrary_oq31m")
+}
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Press" type="AudioStreamPlayer" parent="Audio"]
+
+[node name="Snare" type="AudioStreamPlayer" parent="Audio"]
+
+[node name="Scene" type="Node2D" parent="."]
+
+[node name="Core" type="Sprite2D" parent="Scene"]
+position = Vector2(578.125, 338.125)
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("3_6bov1")
+
+[node name="Indicator" type="Node2D" parent="Scene"]
+
+[node name="Perfect" type="Sprite2D" parent="Scene/Indicator"]
+visible = false
+position = Vector2(578.125, 428)
+scale = Vector2(0.258728, 0.11409)
+texture = ExtResource("4_sf4gf")
+script = ExtResource("5_b1sji")
+
+[node name="Ok" type="Sprite2D" parent="Scene/Indicator"]
+visible = false
+position = Vector2(578.125, 428)
+scale = Vector2(0.258728, 0.11409)
+texture = ExtResource("6_ndw1c")
+script = ExtResource("5_b1sji")
+
+[node name="Good" type="Sprite2D" parent="Scene/Indicator"]
+visible = false
+position = Vector2(578.125, 428)
+scale = Vector2(0.258728, 0.11409)
+texture = ExtResource("7_ifw81")
+script = ExtResource("5_b1sji")
+
+[node name="Poor" type="Sprite2D" parent="Scene/Indicator"]
+visible = false
+position = Vector2(578.125, 428)
+scale = Vector2(0.258728, 0.11409)
+texture = ExtResource("8_5dg5e")
+script = ExtResource("5_b1sji")

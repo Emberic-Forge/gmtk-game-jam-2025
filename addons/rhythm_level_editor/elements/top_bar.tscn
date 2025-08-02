@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5nksoiagv55y"]
+
+[ext_resource type="Theme" uid="uid://bfpcbgtedt8aw" path="res://addons/rhythm_level_editor/rhythm_editor_theme.tres" id="1_ktv4s"]
+[ext_resource type="Texture2D" uid="uid://cipww18wehbaa" path="res://addons/rhythm_level_editor/icons/font_awesome/play-solid-full.svg" id="1_sdfcq"]
+[ext_resource type="Texture2D" uid="uid://rausk0ryahco" path="res://addons/rhythm_level_editor/icons/font_awesome/circle-regular-full.svg" id="2_ktv4s"]
+[ext_resource type="Script" uid="uid://dox3i0c2e35gu" path="res://addons/rhythm_level_editor/scripts/top_bar.gd" id="2_v1g8h"]
+[ext_resource type="PackedScene" uid="uid://otr10s2mrqg" path="res://addons/rhythm_level_editor/elements/bpm_settings.tscn" id="3_87enu"]
+[ext_resource type="Texture2D" uid="uid://dvfyppaqr78xj" path="res://addons/rhythm_level_editor/icons/font_awesome/circle-solid-full.svg" id="3_v1g8h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4f6ym"]
+
+[node name="TopBar" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 30)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_right = 76.5
+offset_bottom = 32.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ktv4s")
+theme_override_styles/panel = SubResource("StyleBoxFlat_4f6ym")
+script = ExtResource("2_v1g8h")
+bpm_menu = ExtResource("3_87enu")
+
+[node name="Order" type="BoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MenuBar" type="MenuBar" parent="Order"]
+layout_mode = 2
+flat = true
+switch_on_hover = false
+
+[node name="File" type="PopupMenu" parent="Order/MenuBar"]
+auto_translate_mode = 1
+size = Vector2i(128, 116)
+item_count = 3
+item_0/text = "New"
+item_0/id = 0
+item_1/text = "Load Map"
+item_1/id = 1
+item_2/text = "Save"
+item_2/id = 2
+
+[node name="Edit" type="PopupMenu" parent="Order/MenuBar"]
+auto_translate_mode = 1
+size = Vector2i(128, 116)
+item_count = 4
+item_0/text = "Rename Map"
+item_0/id = 0
+item_1/id = 3
+item_1/separator = true
+item_2/text = "Change Music"
+item_2/id = 1
+item_3/text = "Change BPM"
+item_3/id = 2
+
+[node name="Spacing" type="Control" parent="Order"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayTest" type="TextureButton" parent="Order"]
+layout_mode = 2
+focus_mode = 0
+action_mode = 0
+texture_normal = ExtResource("1_sdfcq")
+
+[node name="Record" type="TextureButton" parent="Order"]
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("2_ktv4s")
+texture_pressed = ExtResource("3_v1g8h")
+stretch_mode = 3
+
+[connection signal="id_pressed" from="Order/MenuBar/File" to="." method="_on_file_id_pressed"]
+[connection signal="id_pressed" from="Order/MenuBar/Edit" to="." method="_on_edit_id_pressed"]
+[connection signal="pressed" from="Order/PlayTest" to="." method="_on_play_test_pressed"]
+[connection signal="toggled" from="Order/Record" to="." method="_on_record_toggled"]

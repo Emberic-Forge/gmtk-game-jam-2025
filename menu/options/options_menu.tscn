@@ -50,14 +50,14 @@ layout_mode = 2
 
 [node name="tab" type="TabContainer" parent="order/body/margin"]
 layout_mode = 2
-current_tab = 0
+current_tab = 1
 all_tabs_in_front = true
 
 [node name="Audio" parent="order/body/margin/tab" instance=ExtResource("4_h1dxb")]
+visible = false
 layout_mode = 2
 
 [node name="Controls" parent="order/body/margin/tab" instance=ExtResource("5_h1dxb")]
-visible = false
 layout_mode = 2
 
 [node name="bottom" type="HBoxContainer" parent="order"]
