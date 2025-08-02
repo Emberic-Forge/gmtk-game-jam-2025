@@ -3,6 +3,7 @@ extends PanelContainer
 
 @export var bpm_menu : PackedScene
 @export var debug_preview : Control
+@export var music_player : AdvancedAudioStreamPlayer
 
 
 func _on_file_id_pressed(entry_id : int) -> void:
@@ -65,9 +66,13 @@ func on_file_saved(path : String) -> void:
 
 func on_file_loaded(path : String) -> void:
 	RhythmComposer.load_from_file(path)
+	music_player.observed_stream = RhythmComposer.get_map_music()
+	print("file loaded!")
 
 func on_new_music_selected(path : String) -> void:
 	RhythmComposer.set_map_music(path)
+	music_player.observed_stream = RhythmComposer.get_map_music()
+	print("music selected!")
 
 
 

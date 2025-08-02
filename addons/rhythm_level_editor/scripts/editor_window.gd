@@ -24,83 +24,32 @@ var wizard_dialog : Popup
 
 var default_select_music_title : String
 var paused_pos : float
-var target_binds : Array[StringName]
+var target_binds : Array
 
 func _enter_tree() -> void:
 	default_select_music_title = "Select Music..."
 
-	for action in InputMap.get_actions():
-		var is_built_in : bool = action.containsn("ui") || action.containsn("spatial_editor")
-		if not InputMap.action_get_events(action).is_empty() and not is_built_in:
-			target_binds.append(action)
+	var proj_settings := ProjectSettings.get_property_list()
+	for entry in proj_settings:
+		var name : StringName = entry.name
+		var is_input := name.containsn("input/") && !name.containsn("ui")
+		if is_input:
+			var event = ProjectSettings.get_setting(name)
+			print("%s: %s" % [name, event])
+			target_binds.append(event)
 
-#Input Binding
-#func _on_clear_composer_pressed() -> void:
-	#RhythmComposer.clear_current_map()
-	#music_player.stream = null
-	#playback.value = 0
-	#paused_pos = 0
-	#timer.text = "%02d:%02d" % [0, 0]
-#
-#func _on_load_map_pressed() -> void:
-	#initialize_file_dialog(EditorFileDialog.FileMode.FILE_MODE_OPEN_FILE, on_confirmed_file_load, "*.json", "Json")
-#
-#func _on_save_map_pressed() -> void:
-	#initialize_file_dialog(EditorFileDialog.FileMode.FILE_MODE_SAVE_FILE, on_confirmed_file_save, "*.json", "Json")
-#
-#func _on_record_toggled(toggled_on : bool) -> void:
-	#RhythmComposer.is_currently_recording = toggled_on
-#
-#func _on_select_music_pressed() -> void:
-	#initialize_file_dialog(EditorFileDialog.FileMode.FILE_MODE_OPEN_FILE, on_music_selected, "*.wav, *.mp3, *.ogg", "Audio")
-#
-#
-#func _on_input_value_changed(value : float) -> void:
-	#RhythmComposer.set_map_offset(value)
-#
-#func _on_play_pressed():
-	#if music_player.stream:
-		#music_player.play(paused_pos)
-#
-#func _on_pause_pressed():
-	#if music_player.stream and music_player.playing:
-		#paused_pos = music_player.get_playback_position()
-		#music_player.stop()
-#
-#func _on_stop_pressed():
-	#if music_player.stream and music_player.playing:
-		#playback.value = 0
-		#paused_pos = 0
-		#music_player.stop()
-# Update
+func get_events(entry_bind : Dictionary) -> Array[InputEventKey]:
+	var result : Array[InputEventKey]
+	for entry in entry_bind["events"]:
+		var event : InputEventKey = entry
+		result.append(event)
+	return result
 
-func _process(_delta : float) -> void:
-	for action in target_binds:
-		if Input.is_action_just_pressed(action):
-			RhythmComposer.read_input(action, music_player.get_playback_position())
-			return
+func _unhandled_input(event : InputEvent) -> void:
+	if !music_player || !music_player.stream || event is InputEventMouse:
+		return
 
-# Dialog Logic
-
-
-#func on_confirmed_file_save(file_name : String) -> void:
-	#RhythmComposer.save_to_file(file_name)
-	#if file_dialog:
-		#file_dialog.queue_free()
-#
-#func on_confirmed_file_load(file_name : String) -> void:
-	#RhythmComposer.load_from_file(file_name)
-	#var clip = RhythmComposer.get_map_music()
-	#music_player.stream = clip
-#
-	#playback.value = 0
-	#paused_pos = 0
-	#timer.text = "%02d:%02d" % [0, 0]
-	#if file_dialog:
-		#file_dialog.queue_free()
-#
-#func on_music_selected(file_name : String) -> void:
-	#RhythmComposer.set_map_music(file_name)
-	#music_player.stream = load(file_name)
-	#if file_dialog:
-		#file_dialog.queue_free()
+	for entry in target_binds:
+		var is_valid := get_events(entry)[0].is_match(event)
+		if is_valid:
+			RhythmComposer.read_input(event.as_text(),music_player.get_playback_position())

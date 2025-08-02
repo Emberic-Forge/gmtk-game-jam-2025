@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://nj8qnyke41u7" path="res://addons/rhythm_level_editor/elements/playback_bar.tscn" id="5_t4ord"]
 [ext_resource type="Script" uid="uid://cl03ljte1xnpk" path="res://addons/rhythm_level_editor/scripts/advanced_audio_stream_player.gd" id="6_6xw2t"]
 
-[node name="EditorWindow" type="BoxContainer"]
+[node name="EditorWindow" type="BoxContainer" node_paths=PackedStringArray("music_player")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -19,10 +19,12 @@ theme = ExtResource("1_xh8cd")
 alignment = 2
 vertical = true
 script = ExtResource("1_4f6ym")
+music_player = NodePath("MusicPlayer")
 new_file_wizard = ExtResource("3_t4ord")
 
-[node name="TopBar" parent="." instance=ExtResource("2_aj77l")]
+[node name="TopBar" parent="." node_paths=PackedStringArray("music_player") instance=ExtResource("2_aj77l")]
 layout_mode = 2
+music_player = NodePath("../MusicPlayer")
 
 [node name="MainView" type="BoxContainer" parent="."]
 layout_mode = 2
@@ -47,8 +49,9 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="PlaybackBar" parent="Control/Dashboard/MarginContainer" instance=ExtResource("5_t4ord")]
+[node name="PlaybackBar" parent="Control/Dashboard/MarginContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_t4ord")]
 layout_mode = 2
+player = NodePath("../../../../MusicPlayer")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 script = ExtResource("6_6xw2t")

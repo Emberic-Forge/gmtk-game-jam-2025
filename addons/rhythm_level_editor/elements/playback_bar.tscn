@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cnsyrwsvqvt3g" path="res://addons/rhythm_level_editor/scripts/playback_bar.gd" id="2_ox8qk"]
 [ext_resource type="Texture2D" uid="uid://p2orbproymka" path="res://addons/rhythm_level_editor/icons/font_awesome/pause-solid-full.svg" id="3_ox8qk"]
 
-[node name="PlaybackBar" type="PanelContainer"]
+[node name="PlaybackBar" type="PanelContainer" node_paths=PackedStringArray("music_label", "timer", "timeline")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,6 +16,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_l1nip")
 script = ExtResource("2_ox8qk")
+music_label = NodePath("Order/Controls/MusicLabel")
+timer = NodePath("Order/Controls/Timer")
+timeline = NodePath("Order/Timeline")
 
 [node name="Order" type="BoxContainer" parent="."]
 layout_mode = 2
@@ -32,10 +35,17 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 text = "00:00"
 
+[node name="MusicLabel" type="Label" parent="Order/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Insert Music Track Here"
+clip_text = true
+
 [node name="Spacing" type="Control" parent="Order/Controls"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 4.0
+size_flags_stretch_ratio = 2.0
 
 [node name="Stop" type="Button" parent="Order/Controls"]
 layout_mode = 2
