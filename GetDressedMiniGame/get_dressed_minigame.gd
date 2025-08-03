@@ -5,42 +5,54 @@ var clothing_click_order = []
 var equipped_clothes = []
 var clothes_labels = []
 
-func _process( delta ):
-	pass
+var next_clothes_press_time
+var clothes_press_order = []
 
-enum DirectionalInputs { UP, DOWN, LEFT, RIGHT}
-
-func process():
-	var clothing_buttons = $ClothingButtons.get_children()
-	for clothing_button in clothing_buttons:
-		clothing_button.on_clicked.connect( _on_clicked )
-	
+func _ready():
 	equipped_clothes = $Man.get_children()
 	for equipped_clothing in equipped_clothes:
 		equipped_clothing.visible = false
 
-func _on_clicked( clothing_zone, clothing_id, clothing_node ) :
-	if ( $RhythmGameplay._perform_action() ):
-		clothing_node.visible = false
-		clothing_node.input_pickable = false
-		clothing_click_order.append(clothing_zone)
-		for equipped_clothing in equipped_clothes :
-			if ( equipped_clothing.clothing_id == clothing_id):
-				equipped_clothing.visible = true
-				equipped_clothing.z_index = clothing_click_order.size()
+func _process( delta ):	
+	var valid_press = false
+	var pressed_clothing = 0
+	var pressed_something = false
+	if ( Input.is_action_just_pressed("Action") ):
+		pressed_clothing = $RhythmGameplay._perform_action("Space")
+		pressed_something = true
+	if ( Input.is_action_just_pressed("left") ):
+		pressed_clothing = $RhythmGameplay._perform_action("A")
+		pressed_something = true
+	if ( Input.is_action_just_pressed("right") ):
+		pressed_clothing = $RhythmGameplay._perform_action("D")
+		pressed_something = true
+	if ( Input.is_action_just_pressed("up") ):
+		pressed_clothing = $RhythmGameplay._perform_action("W")
+		pressed_something = true
+	if ( Input.is_action_just_pressed("down") ):
+		pressed_clothing = $RhythmGameplay._perform_action("S")
+		pressed_something = true
 		
-		for clothes_label in clothes_labels :
-			if ( clothes_label.clothing_id == clothing_id ):
-				clothes_label.modulate.a = 1
+	if ( !(pressed_clothing is bool) && pressed_clothing != 0 ):
+		pressed_clothing = pressed_clothing - 1
+		if ( clothing_click_order.find(pressed_clothing) == -1):
+			var clothing_node = $LooseClothing.get_children()[pressed_clothing]
+			clothing_node.visible = false
+			clothing_click_order.append(pressed_clothing)
+			equipped_clothes[pressed_clothing].visible = true
+			equipped_clothes[pressed_clothing].z_index = clothing_click_order.size()
 		
 		if ( clothing_click_order.size() == equipped_clothes.size() ):
 			var is_valid_order = true
-			var running_max = -1
-			for clothing_click in clothing_click_order:
-				if ( clothing_click < running_max ):
-					is_valid_order = false
-					break
-				running_max = clothing_click
+			var underpants = clothing_click_order.find(0)
+			var trousers = clothing_click_order.find(2)
+			var shirt = clothing_click_order.find(3)
+			var vest = clothing_click_order.find(4)
+			var belt = clothing_click_order.find(5)
+			
+			is_valid_order = is_valid_order && trousers > underpants
+			is_valid_order = is_valid_order && belt > trousers
+			is_valid_order = is_valid_order && vest > shirt
 			
 			var tween = get_tree().create_tween()
 			tween.tween_property( $Man, "position:x", $Man.position.x + 1200, 2)
@@ -50,7 +62,7 @@ func _on_clicked( clothing_zone, clothing_id, clothing_node ) :
 				$Success.visible = true
 			else:
 				$Failure.visible = true
-	else:
+	elif( pressed_something ):
 		_shake_sprite()
 
 func _shake_sprite():

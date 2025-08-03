@@ -31,7 +31,7 @@ func _process( delta ):
 			
 	if ( valid_press ):
 		_trigger_awake()
-		waking_progress += 1
+		waking_progress += 3
 	
 	if ( waking_progress >= 100 ):
 		$RhythmGameplay.playing = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://drwf0yhcmrw3e"]
+[gd_scene load_steps=13 format=3 uid="uid://drwf0yhcmrw3e"]
 
 [ext_resource type="Script" uid="uid://d3vbj0le2ths2" path="res://GetDressedMiniGame/get_dressed_minigame.gd" id="1_yhpp4"]
 [ext_resource type="Texture2D" uid="uid://ba63q22iyuxtb" path="res://GetDressedMiniGame/Assets/Art/Background.png" id="1_ytwik"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bn40t34s2xsqr" path="res://GetDressedMiniGame/Assets/Art/ClothingSheet.png" id="4_4nps2"]
 [ext_resource type="Texture2D" uid="uid://cu34ensjg3fow" path="res://GetDressedMiniGame/Assets/Art/Success.png" id="7_iiie5"]
 [ext_resource type="Texture2D" uid="uid://d1oe67r70siky" path="res://GetDressedMiniGame/Assets/Art/Failure.png" id="8_kw3n4"]
+[ext_resource type="Texture2D" uid="uid://dfmtpweekng5d" path="res://GlobalAssets/Art/UI/Line.png" id="8_r4pjy"]
 [ext_resource type="Texture2D" uid="uid://bvusbdfbhb1fb" path="res://GlobalAssets/Art/UI/DownArrow.svg" id="11_0q5ia"]
 [ext_resource type="Texture2D" uid="uid://c0v62cubt7xum" path="res://GlobalAssets/Art/UI/LeftArrow.svg" id="12_5itd6"]
 [ext_resource type="Texture2D" uid="uid://beys8qg0xjo0s" path="res://GlobalAssets/Art/UI/RightArrow.svg" id="13_arrbr"]
@@ -49,17 +50,17 @@ texture = ExtResource("4_4nps2")
 region_enabled = true
 region_rect = Rect2(86.211, 5.54157, 63.0889, 59.9344)
 
-[node name="Belt" type="Sprite2D" parent="Man"]
-position = Vector2(-84.1667, 21.3333)
-texture = ExtResource("4_4nps2")
-region_enabled = true
-region_rect = Rect2(99.5298, 86.9988, 31.194, 13.3188)
-
 [node name="Vest" type="Sprite2D" parent="Man"]
 position = Vector2(-84.1667, -6.33334)
 texture = ExtResource("4_4nps2")
 region_enabled = true
 region_rect = Rect2(9.10234, 149.595, 35.0494, 42.7603)
+
+[node name="Belt" type="Sprite2D" parent="Man"]
+position = Vector2(-84.1667, 21.3333)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(99.5298, 86.9988, 31.194, 13.3188)
 
 [node name="LooseClothing" type="Node" parent="."]
 
@@ -135,84 +136,74 @@ horizontal_alignment = 1
 
 [node name="UI" type="Node" parent="."]
 
-[node name="ArrowDown" type="Sprite2D" parent="UI"]
-position = Vector2(750, 238)
-texture = ExtResource("11_0q5ia")
-
-[node name="Marker2D" type="Marker2D" parent="UI/ArrowDown"]
-position = Vector2(0, 50)
-
-[node name="ArrowLeft" type="Sprite2D" parent="UI"]
-position = Vector2(675, 238)
-texture = ExtResource("12_5itd6")
-
-[node name="Marker2D" type="Marker2D" parent="UI/ArrowLeft"]
-position = Vector2(-50, 0)
-
-[node name="ArrowRight" type="Sprite2D" parent="UI"]
-position = Vector2(825, 238)
-texture = ExtResource("13_arrbr")
-
-[node name="Marker2D" type="Marker2D" parent="UI/ArrowRight"]
-position = Vector2(50, 0)
-
-[node name="ArrowUp" type="Sprite2D" parent="UI"]
-position = Vector2(750, 163)
-texture = ExtResource("14_l5x1w")
-
-[node name="Marker2D" type="Marker2D" parent="UI/ArrowUp"]
-position = Vector2(0, -50)
-
-[node name="Trousers" type="Sprite2D" parent="UI"]
-visible = false
-position = Vector2(134, 118)
-scale = Vector2(1.85484, 1.85484)
-texture = ExtResource("4_4nps2")
-region_enabled = true
-region_rect = Rect2(182.555, 23.1066, 31.0731, 39.4997)
-
 [node name="Underpants" type="Sprite2D" parent="UI"]
-visible = false
-position = Vector2(232, 113)
+position = Vector2(-206.076, 148)
 scale = Vector2(2.45, 2.45)
 texture = ExtResource("4_4nps2")
 region_enabled = true
 region_rect = Rect2(248.576, 137.059, 24.8828, 20.6005)
 
 [node name="Socks" type="Sprite2D" parent="UI"]
-visible = false
-position = Vector2(188.306, 71.5)
+position = Vector2(-249.77, 106.5)
 scale = Vector2(2.61111, 2.61111)
 texture = ExtResource("4_4nps2")
 region_enabled = true
 region_rect = Rect2(193.276, 92.4935, 19.5866, 18.0039)
 
+[node name="Trousers" type="Sprite2D" parent="UI"]
+position = Vector2(-304.076, 153)
+scale = Vector2(1.85484, 1.85484)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(182.555, 23.1066, 31.0731, 39.4997)
+
 [node name="Shirt" type="Sprite2D" parent="UI"]
-visible = false
-position = Vector2(265, 58)
+position = Vector2(-173.076, 93)
 scale = Vector2(1.57692, 1.57692)
 texture = ExtResource("4_4nps2")
 region_enabled = true
 region_rect = Rect2(232.484, 70.9324, 49.243, 26.3595)
 
-[node name="Belt" type="Sprite2D" parent="UI"]
-visible = false
-position = Vector2(189, 160)
-scale = Vector2(1.31818, 1.31818)
-texture = ExtResource("4_4nps2")
-region_enabled = true
-region_rect = Rect2(193.159, 118.104, 33.8907, 52.1396)
-
 [node name="Vest" type="Sprite2D" parent="UI"]
-visible = false
-position = Vector2(131.288, 53.375)
+position = Vector2(-306.788, 88.375)
 scale = Vector2(2.8375, 2.8375)
 texture = ExtResource("4_4nps2")
 region_enabled = true
 region_rect = Rect2(223.285, 36.4186, 22.3041, 20.5662)
 
-[node name="RhythmGameplay" type="Node" parent="."]
-script = ExtResource("14_0q5ia")
+[node name="Belt" type="Sprite2D" parent="UI"]
+position = Vector2(-249.076, 195)
+scale = Vector2(1.31818, 1.31818)
+texture = ExtResource("4_4nps2")
+region_enabled = true
+region_rect = Rect2(193.159, 118.104, 33.8907, 52.1396)
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(535, 246)
+[node name="RhythmGameplay" type="Node" parent="." node_paths=PackedStringArray("rhythm_location", "clothing_sprites")]
+script = ExtResource("14_0q5ia")
+rhythm_location = NodePath("../RhythmLocation")
+height_per_second = 200
+game_mode = 1
+clothing_sprites = [NodePath("../UI/Underpants"), NodePath("../UI/Socks"), NodePath("../UI/Trousers"), NodePath("../UI/Shirt"), NodePath("../UI/Vest"), NodePath("../UI/Belt")]
+
+[node name="RhythmLocation" type="Marker2D" parent="."]
+position = Vector2(666, 306)
+
+[node name="Sprite2D" type="Sprite2D" parent="RhythmLocation"]
+position = Vector2(150, 4)
+texture = ExtResource("8_r4pjy")
+
+[node name="ArrowDown" type="Sprite2D" parent="RhythmLocation"]
+position = Vector2(194, 42)
+texture = ExtResource("11_0q5ia")
+
+[node name="ArrowLeft" type="Sprite2D" parent="RhythmLocation"]
+position = Vector2(7, 45)
+texture = ExtResource("12_5itd6")
+
+[node name="ArrowRight" type="Sprite2D" parent="RhythmLocation"]
+position = Vector2(280, 43)
+texture = ExtResource("13_arrbr")
+
+[node name="ArrowUp" type="Sprite2D" parent="RhythmLocation"]
+position = Vector2(106, 43)
+texture = ExtResource("14_l5x1w")
