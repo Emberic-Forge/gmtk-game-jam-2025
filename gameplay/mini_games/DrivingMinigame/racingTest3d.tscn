@@ -1,0 +1,175 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0o4ajfr5ui7"]
+
+[ext_resource type="Script" uid="uid://bhwekmdqwe0rf" path="res://gameplay/mini_games/DrivingMinigame/character_body_3d.gd" id="1_rq47e"]
+[ext_resource type="Texture2D" uid="uid://bnts8x1bh8t3j" path="res://3DRacingTest/car_dashboard.png" id="3_prqia"]
+[ext_resource type="Texture2D" uid="uid://bd6vx25qlke56" path="res://3DRacingTest/steering_wheel.png" id="4_6doed"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l1pgi"]
+size = Vector3(2000, 1, 2000)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l1pgi"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_58wxf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_58wxf"]
+
+[node name="RacingTest3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.669131, 0.743145, 0, -0.743145, 0.669131, 8.31983, 3.95306, 9.83643)
+light_energy = 1.919
+light_indirect_energy = 6.435
+light_volumetric_fog_energy = 1.612
+light_angular_distance = 3.44
+light_specular = 0.158
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_l1pgi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, 0, 0)
+mesh = SubResource("PlaneMesh_l1pgi")
+
+[node name="tree-snow-a21" parent="StaticBody3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 40, 0, -100)
+script = null
+
+[node name="tree-snow-a20" parent="StaticBody3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -200)
+script = null
+
+[node name="tree-snow-a22" parent="StaticBody3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -75)
+script = null
+
+[node name="tree-snow-a23" parent="StaticBody3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 40, 0, -300)
+script = null
+
+[node name="tree-snow-a24" parent="StaticBody3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 80, 0, -400)
+script = null
+
+[node name="tree-snow-a25" parent="StaticBody3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -300)
+script = null
+
+[node name="tree-snow-a26" parent="StaticBody3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 80, 0, -300)
+script = null
+
+[node name="tree-snow-a27" parent="StaticBody3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 80, 0, -200)
+script = null
+
+[node name="tree-snow-a28" parent="StaticBody3D"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, -100)
+script = null
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_rq47e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(0.99957, 0, -0.0293173, 0, 1, 0, 0.0293173, 0, 0.99957, 0, 1.781, 0)
+mesh = SubResource("SphereMesh_58wxf")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(0.99957, 0, -0.0293173, 0, 1, 0, 0.0293173, 0, 0.99957, 0, 1.781, 0)
+shape = SubResource("SphereShape3D_58wxf")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(0.99957, 0.00634543, -0.0286224, 0, 0.976296, 0.21644, 0.0293173, -0.216347, 0.975876, -1.04257e-07, 3.42218, 5.71596)
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody3D/Camera3D"]
+position = Vector2(576, 448)
+scale = Vector2(0.987083, 0.987083)
+texture = ExtResource("3_prqia")
+
+[node name="SteeringWheel" type="Sprite2D" parent="CharacterBody3D/Camera3D"]
+position = Vector2(240, 568)
+scale = Vector2(0.396939, 0.396939)
+texture = ExtResource("4_6doed")

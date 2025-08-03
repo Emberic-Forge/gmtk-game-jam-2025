@@ -1,10 +1,19 @@
 extends Node
 
+class DressNote:
+	var clothing_sprites : Array[Sprite2D]
+	var clothing_id : Array[int]
+	var time : float
+
+enum GameMode { SLEEP, DRESS, DRIVE, BRUSH }
+
+@export_group("Music")
 @export var beats_per_minute = 60
 @export var press_success_audio = preload("res://GlobalAssets/Audio/PressSuccess.wav")
 @export var press_miss_audio = preload("res://GlobalAssets/Audio/PressMiss.wav")
 @export var music_audio = preload("res://GlobalAssets/Audio/OhDeerMyBeer.wav")
 
+@export_group("Input Indicators")
 @export var right_input = preload("res://GlobalAssets/Art/UI/RightArrow.svg")
 @export var left_input = preload("res://GlobalAssets/Art/UI/LeftArrow.svg")
 @export var up_input = preload("res://GlobalAssets/Art/UI/UpArrow.svg")
@@ -12,30 +21,29 @@ extends Node
 
 @export var rhythm_location : Marker2D
 
+@export_group("Timings")
 @export var use_count_down = false
 @export var success_timing = 0.1
 @export var height_per_second = 400
 
-enum GameMode { SLEEP, DRESS, DRIVE, BRUSH }
+@export_group("Game Mode")
 @export var game_mode = GameMode.SLEEP
 
 @export var dressed_beats = 1
 
-class DressNote:
-	var clothing_sprites : Array[Sprite2D]
-	var clothing_id : Array[int]
-	var time : float
+@export_group("Other")
+@export_file("*.json") var track_path : String
 
 var dress_notes = []
 @export var clothing_sprites : Array[Sprite2D]
 
 var track_info
 
-var current_time = 0
-var beat_time
+var current_time : float = 0
+var beat_time : float
 
-var music_audio_player
-var press_audio_player
+var music_audio_player : AudioStreamPlayer
+var press_audio_player : AudioStreamPlayer
 
 var rhythm_scroll
 
@@ -44,28 +52,28 @@ var playing = true
 func _ready():
 	press_audio_player = AudioStreamPlayer.new()
 	add_child(press_audio_player)
-	
+
 	music_audio_player = AudioStreamPlayer.new()
 	add_child(music_audio_player)
 	music_audio_player.set_stream( music_audio )
 	music_audio_player.play()
-	
+
 	var json = JSON.new()
-	track_info = json.parse_string( FileAccess.get_file_as_string("res://GlobalAssets/AudioData/OhDeerTrackData.json") )
-	
+	track_info = json.parse_string( FileAccess.get_file_as_string(track_path) )
+
 	var desired_horizontal_offset = 50
 	beat_time = 60.0/beats_per_minute
-	
+
 	rhythm_scroll = Node2D.new()
 	rhythm_location.add_child( rhythm_scroll )
-	
+
 	if ( game_mode == GameMode.SLEEP || game_mode == GameMode.BRUSH ):
 		for note in track_info["notes"]:
 			var desired_sprite
 			var desired_offset
 			if ( note.keys()[0] == "A" ):
 				desired_sprite = left_input
-				desired_offset = desired_horizontal_offset * 0 
+				desired_offset = desired_horizontal_offset * 0
 			elif ( note.keys()[0] == "W"):
 				desired_sprite = up_input
 				desired_offset = desired_horizontal_offset * 1
@@ -99,21 +107,21 @@ func _ready():
 				dress_options.remove_at( found_idx )
 				dress_note.clothing_sprites.append( clothing_sprites[found] )
 				dress_note.clothing_id.append( found )
-			
+
 				var spawned_sprite = clothing_sprites[found].duplicate()
 				rhythm_scroll.add_child( spawned_sprite )
 				spawned_sprite.position = Vector2( desired_offset, -i * height_per_second )
 				desired_offset += desired_horizontal_offset
-			
+
 			dress_note.time = time
 			dress_notes.append(dress_note)
 
 func _process( delta ):
 	if ( !playing ):
 		return
-		
+
 	current_time += delta
-	
+
 	var note_children = rhythm_scroll.get_children()
 	for note_child in note_children :
 		note_child.position.y += delta*height_per_second
@@ -135,7 +143,7 @@ func _perform_action( key ):
 				success = true
 				break
 			dress_beat_chosen += 1
-	
+
 	if ( !success ):
 		press_audio_player.set_stream(press_miss_audio)
 		press_audio_player.play()

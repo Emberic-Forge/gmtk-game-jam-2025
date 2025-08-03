@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0irdwu2isov4"]
+
+[ext_resource type="Texture2D" uid="uid://dywt1dvp6jk7" path="res://gameplay/mini_games/ToothbrushMinigame/Assets/Art/ToothbrushSpriteSet.png" id="1_2ig51"]
+[ext_resource type="Script" uid="uid://dnlmfmmirwrmb" path="res://gameplay/mini_games/ToothbrushMinigame/toothbrush_minigame.gd" id="1_wsil6"]
+[ext_resource type="Script" uid="uid://clws3dikh2vcm" path="res://GlobalAssets/rhythm_gameplay.gd" id="2_4rkws"]
+[ext_resource type="Texture2D" uid="uid://dfmtpweekng5d" path="res://GlobalAssets/Art/UI/Line.png" id="2_sajtm"]
+
+[node name="ToothbrushMinigame" type="Node2D" node_paths=PackedStringArray("toothbrush_arm", "toothbrush_forearm")]
+script = ExtResource("1_wsil6")
+toothbrush_arm = NodePath("ToothbrushArm")
+toothbrush_forearm = NodePath("ToothbrushForearm")
+
+[node name="ToothbrushCharacter" type="Sprite2D" parent="."]
+position = Vector2(393.42, 355.49)
+scale = Vector2(2.83, 2.83)
+texture = ExtResource("1_2ig51")
+region_enabled = true
+region_rect = Rect2(0, 0, 148.097, 206.422)
+
+[node name="ToothbrushArm" type="Sprite2D" parent="."]
+position = Vector2(553.42, 499.49)
+scale = Vector2(2.83, 2.83)
+texture = ExtResource("1_2ig51")
+region_enabled = true
+region_rect = Rect2(194, 142, 62, 47)
+
+[node name="ToothbrushForearm" type="Sprite2D" parent="."]
+position = Vector2(497.42, 443.49)
+scale = Vector2(2.83, 2.83)
+texture = ExtResource("1_2ig51")
+region_enabled = true
+region_rect = Rect2(186, 17, 101, 85)
+
+[node name="RhythmGameplay" type="Node" parent="." node_paths=PackedStringArray("rhythm_location")]
+script = ExtResource("2_4rkws")
+rhythm_location = NodePath("../RhythmLocation")
+game_mode = 3
+
+[node name="RhythmLocation" type="Marker2D" parent="."]
+position = Vector2(736, 304)
+
+[node name="Line" type="Sprite2D" parent="RhythmLocation"]
+position = Vector2(160, 0)
+texture = ExtResource("2_sajtm")

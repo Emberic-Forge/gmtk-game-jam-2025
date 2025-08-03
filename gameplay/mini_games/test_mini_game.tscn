@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwamggnam1yc"]
 
 [ext_resource type="Script" uid="uid://cf72yf5veiy37" path="res://gameplay/mini_games/scripts/test_mini_game.gd" id="1_rmg5t"]
-[ext_resource type="PackedScene" uid="uid://c00yqn3o6ylfi" path="res://RhythmPrototype/RhythmPrototype.tscn" id="2_paf4g"]
+[ext_resource type="PackedScene" uid="uid://c00yqn3o6ylfi" path="res://prototypes/RhythmPrototype/RhythmPrototype.tscn" id="2_paf4g"]
 
-[node name="TestMiniGame" type="Node"]
+[node name="TestMiniGame" type="Node2D"]
 script = ExtResource("1_rmg5t")
 
 [node name="RhythmPrototype" parent="." instance=ExtResource("2_paf4g")]

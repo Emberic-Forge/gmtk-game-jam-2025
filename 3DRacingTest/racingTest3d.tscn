@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://d0o4ajfr5ui7"]
 
-[ext_resource type="Script" uid="uid://bhwekmdqwe0rf" path="res://DrivingMinigame/character_body_3d.gd" id="1_rq47e"]
-[ext_resource type="PackedScene" uid="uid://bn8vl2se0dd6u" path="res://3DRacingTest/kenney_holiday-kit/Models/FBX format/tree-snow-a.fbx" id="2_rq47e"]
+[ext_resource type="Script" uid="uid://bhwekmdqwe0rf" path="res://gameplay/mini_games/DrivingMinigame/character_body_3d.gd" id="1_rq47e"]
+[ext_resource type="PackedScene" path="res://3DRacingTest/kenney_holiday-kit/Models/FBX format/tree-snow-a.fbx" id="2_rq47e"]
 [ext_resource type="Texture2D" uid="uid://bnts8x1bh8t3j" path="res://3DRacingTest/car_dashboard.png" id="3_prqia"]
 [ext_resource type="Texture2D" uid="uid://bd6vx25qlke56" path="res://3DRacingTest/steering_wheel.png" id="4_6doed"]
 

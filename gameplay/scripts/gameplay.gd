@@ -1,4 +1,4 @@
-class_name Root extends Node
+class_name Root extends Node2D
 
 var mini_game : Array[BaseMiniGame]
 var current_mini_game : int
