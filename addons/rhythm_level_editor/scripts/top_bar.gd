@@ -25,8 +25,8 @@ func _on_edit_id_pressed(entry_id : int) -> void:
 			change_bpm()
 
 func create_new_file() -> void:
-	print("creating new file")
-	ExtendedWindows.create_file_dialog(EditorFileDialog.FILE_MODE_SAVE_FILE, on_saving_new_file, "*.json", "Json")
+	print("map cleared!")
+	RhythmComposer.clear_current_map()
 	pass
 
 func load_map() -> void:

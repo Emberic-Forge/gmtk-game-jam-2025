@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://byffep0v3hiy7"]
+
+[ext_resource type="Script" uid="uid://d3gn7ywepym3m" path="res://gameplay/scripts/gameplay.gd" id="1_nyvx4"]
+[ext_resource type="PackedScene" uid="uid://drwf0yhcmrw3e" path="res://gameplay/mini_games/GetDressedMiniGame/GetDressedMinigame.tscn" id="3_ktb3l"]
+[ext_resource type="PackedScene" uid="uid://cfrh4t3i4ed0p" path="res://menu/pause_menu.tscn" id="3_ueusv"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_nyvx4")
+
+[node name="GetDressedMiniGame" parent="." instance=ExtResource("3_ktb3l")]
+duration = 10.0
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_ueusv")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

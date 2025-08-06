@@ -1,15 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://byffep0v3hiy7"]
+[gd_scene load_steps=6 format=3 uid="uid://byffep0v3hiy7"]
 
 [ext_resource type="Script" uid="uid://d3gn7ywepym3m" path="res://gameplay/scripts/gameplay.gd" id="1_nyvx4"]
-[ext_resource type="PackedScene" uid="uid://yhwaoqt5mhex" path="res://gameplay/mini_games/SleepingMinigame/sleeping_minigame.tscn" id="3_gvicd"]
-[ext_resource type="PackedScene" uid="uid://drwf0yhcmrw3e" path="res://gameplay/mini_games/GetDressedMiniGame/GetDressedMinigame.tscn" id="3_ktb3l"]
+[ext_resource type="Script" uid="uid://j3upte5x8ej" path="res://gameplay/scripts/map_player.gd" id="2_ktb3l"]
+[ext_resource type="Script" uid="uid://d2n8la7sa0hg" path="res://gameplay/input_listener/scripts/input_listener.gd" id="3_ktb3l"]
 [ext_resource type="PackedScene" uid="uid://cfrh4t3i4ed0p" path="res://menu/pause_menu.tscn" id="3_ueusv"]
 
-[node name="Root" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ueusv"]
+
+[node name="Gameplay" type="Node"]
 script = ExtResource("1_nyvx4")
 
-[node name="GetDressedMiniGame" parent="." instance=ExtResource("3_ktb3l")]
-
-[node name="SleepingMinigame" parent="." instance=ExtResource("3_gvicd")]
+[node name="MapPlayer" type="Node" parent="."]
+script = ExtResource("2_ktb3l")
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_ueusv")]
+
+[node name="Music Player" type="AudioStreamPlayer" parent="."]
+
+[node name="SFX Player" type="AudioStreamPlayer" parent="."]
+
+[node name="InputListener" type="Node" parent="."]
+script = ExtResource("3_ktb3l")
+
+[node name="Scene" type="Node2D" parent="."]
+
+[node name="Flipbook" type="AnimatedSprite2D" parent="Scene"]
+sprite_frames = SubResource("SpriteFrames_ueusv")

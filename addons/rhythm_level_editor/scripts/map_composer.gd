@@ -18,7 +18,7 @@ func _enter_tree() -> void:
 	pass
 
 #File Parsing
-func load_from_file(path : String) -> void:
+func load_from_file(path : String) -> Dictionary:
 	var file = FileAccess.open(path, FileAccess.READ)
 	var data = file.get_as_text()
 	var json := JSON.new()
@@ -29,8 +29,10 @@ func load_from_file(path : String) -> void:
 
 		print("loaded map - %s" % path)
 		on_file_loaded.emit()
+		return current_map
 	else:
 		printerr("Failed to load file at [%s]" % path)
+		return {}
 
 func save_to_file(path : String) -> void:
 	var json_data = JSON.stringify(current_map)

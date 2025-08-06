@@ -1,5 +1,7 @@
 class_name BaseMiniGame extends Node2D
 
-func play(root : Root) -> void:
+@export var duration : float
+
+func play(root : Root, map_path : String) -> void:
 	printerr("Not implemented!")
 	pass

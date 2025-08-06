@@ -1,6 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://chmsafdhygtym"]
+[gd_scene load_steps=4 format=3 uid="uid://chmsafdhygtym"]
 
-[ext_resource type="PackedScene" uid="uid://biciq8w05f27g" path="res://menu/options/controls/remap_button.tscn" id="1_v7c1g"]
 [ext_resource type="PackedScene" uid="uid://3rltpbmfb7wb" path="res://menu/components/settings_slider.tscn" id="2_1d0li"]
 [ext_resource type="Script" uid="uid://duo33lehsmks2" path="res://menu/components/scripts/sliders/blackboard_slider.gd" id="3_27wx4"]
 
@@ -22,18 +21,6 @@ layout_mode = 2
 layout_mode = 2
 text = "Keybinds"
 label_settings = SubResource("LabelSettings_v7c1g")
-
-[node name="remap_button" parent="margin/order" instance=ExtResource("1_v7c1g")]
-layout_mode = 2
-input_action = "test_a"
-
-[node name="remap_button2" parent="margin/order" instance=ExtResource("1_v7c1g")]
-layout_mode = 2
-input_action = "test_b"
-
-[node name="remap_button3" parent="margin/order" instance=ExtResource("1_v7c1g")]
-layout_mode = 2
-input_action = "test_c"
 
 [node name="Mouse Sensitivity" type="Label" parent="margin/order"]
 layout_mode = 2

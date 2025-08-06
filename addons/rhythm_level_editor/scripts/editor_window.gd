@@ -1,5 +1,5 @@
 @tool
-extends BoxContainer
+class_name EditorWindow extends BoxContainer
 
 # Tabs
 @export_group("Toolbar")
@@ -24,7 +24,7 @@ var wizard_dialog : Popup
 
 var default_select_music_title : String
 var paused_pos : float
-var target_binds : Array
+var target_binds : Array[Dictionary]
 
 func _enter_tree() -> void:
 	default_select_music_title = "Select Music..."
@@ -36,7 +36,9 @@ func _enter_tree() -> void:
 		if is_input:
 			var event = ProjectSettings.get_setting(name)
 			print("%s: %s" % [name, event])
-			target_binds.append(event)
+			target_binds.append({name.split("/")[1] : event})
+
+
 
 func get_events(entry_bind : Dictionary) -> Array[InputEventKey]:
 	var result : Array[InputEventKey]
@@ -46,10 +48,14 @@ func get_events(entry_bind : Dictionary) -> Array[InputEventKey]:
 	return result
 
 func _unhandled_input(event : InputEvent) -> void:
-	if !music_player || !music_player.stream || event is InputEventMouse:
+	if !music_player || !music_player.stream || event is InputEventMouse || not event.is_pressed():
 		return
 
 	for entry in target_binds:
-		var is_valid := get_events(entry)[0].is_match(event)
+		var value = entry.values()[0]
+		var key = entry.keys()[0]
+		var is_valid := get_events(value)[0].is_match(event)
 		if is_valid:
-			RhythmComposer.read_input(event.as_text(),music_player.get_playback_position())
+			print(key)
+			RhythmComposer.read_input(key,music_player.get_playback_position())
+			return

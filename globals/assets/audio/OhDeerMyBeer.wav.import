@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dxdnyi4p41qhf"
-path="res://.godot/imported/OhDeerMyBeer.wav-fd4fe8f1cbe1e18d5a7e9c0a272586af.sample"
+path="res://.godot/imported/OhDeerMyBeer.wav-5122e4fccaa251a6422018bd7999855e.sample"
 
 [deps]
 
-source_file="res://GlobalAssets/Audio/OhDeerMyBeer.wav"
-dest_files=["res://.godot/imported/OhDeerMyBeer.wav-fd4fe8f1cbe1e18d5a7e9c0a272586af.sample"]
+source_file="res://globals/assets/audio/OhDeerMyBeer.wav"
+dest_files=["res://.godot/imported/OhDeerMyBeer.wav-5122e4fccaa251a6422018bd7999855e.sample"]
 
 [params]
 

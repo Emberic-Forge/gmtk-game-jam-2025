@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cty3rldpi1sc0"
-path="res://.godot/imported/PressMiss.wav-83ff30ad24e334b8e6360239c9f1b098.sample"
+path="res://.godot/imported/PressMiss.wav-59c0f4fbf41c559d069523760b362218.sample"
 
 [deps]
 
-source_file="res://GlobalAssets/Audio/PressMiss.wav"
-dest_files=["res://.godot/imported/PressMiss.wav-83ff30ad24e334b8e6360239c9f1b098.sample"]
+source_file="res://globals/assets/audio/PressMiss.wav"
+dest_files=["res://.godot/imported/PressMiss.wav-59c0f4fbf41c559d069523760b362218.sample"]
 
 [params]
 

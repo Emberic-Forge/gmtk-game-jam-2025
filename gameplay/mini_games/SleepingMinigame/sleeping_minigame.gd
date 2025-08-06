@@ -12,9 +12,12 @@ extends BaseMiniGame
 
 @export var target_progress : int = 10
 
+var root : Root
+var waking_progress : int = 0
+var wake_up_index : int = 0
 
-var waking_progress = 0
-var wake_up_index = 0
+func play(root : Root, map_path : String) -> void:
+	self.root = root
 
 func _process( delta ):
 	if ( !rhythm_gameplay.playing ):

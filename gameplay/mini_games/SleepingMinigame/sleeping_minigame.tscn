@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://d2nhsj7jsbt7n" path="res://gameplay/mini_games/SleepingMinigame/Assets/Art/Awake.png" id="5_7nl2x"]
 [ext_resource type="Texture2D" uid="uid://j6aq0xpq2m60" path="res://gameplay/mini_games/SleepingMinigame/Assets/Art/Untitled.png" id="7_5b0xa"]
 [ext_resource type="Texture2D" uid="uid://fv1wwt5e3m2o" path="res://gameplay/mini_games/SleepingMinigame/Assets/Art/FullSleep.png" id="7_wle36"]
-[ext_resource type="Script" uid="uid://clws3dikh2vcm" path="res://GlobalAssets/rhythm_gameplay.gd" id="8_mmbjb"]
-[ext_resource type="Texture2D" uid="uid://dfmtpweekng5d" path="res://GlobalAssets/Art/UI/Line.png" id="10_brimh"]
+[ext_resource type="Script" uid="uid://clws3dikh2vcm" path="res://globals/assets/rhythm_gameplay.gd" id="8_mmbjb"]
+[ext_resource type="Texture2D" uid="uid://dfmtpweekng5d" path="res://globals/assets/art/UI/Line.png" id="10_brimh"]
 [ext_resource type="Texture2D" uid="uid://yqla2m7l3261" path="res://gameplay/mini_games/SleepingMinigame/Assets/Art/WakeUpMessages.png" id="10_wle36"]
 
 [sub_resource type="GDScript" id="GDScript_7nl2x"]

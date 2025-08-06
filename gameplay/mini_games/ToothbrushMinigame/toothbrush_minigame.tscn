@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://dywt1dvp6jk7" path="res://gameplay/mini_games/ToothbrushMinigame/Assets/Art/ToothbrushSpriteSet.png" id="1_2ig51"]
 [ext_resource type="Script" uid="uid://dnlmfmmirwrmb" path="res://gameplay/mini_games/ToothbrushMinigame/toothbrush_minigame.gd" id="1_wsil6"]
-[ext_resource type="Script" uid="uid://clws3dikh2vcm" path="res://GlobalAssets/rhythm_gameplay.gd" id="2_4rkws"]
-[ext_resource type="Texture2D" uid="uid://dfmtpweekng5d" path="res://GlobalAssets/Art/UI/Line.png" id="2_sajtm"]
+[ext_resource type="Script" uid="uid://clws3dikh2vcm" path="res://globals/assets/rhythm_gameplay.gd" id="2_4rkws"]
+[ext_resource type="Texture2D" uid="uid://dfmtpweekng5d" path="res://globals/assets/art/UI/Line.png" id="2_sajtm"]
 
 [node name="ToothbrushMinigame" type="Node2D" node_paths=PackedStringArray("toothbrush_arm", "toothbrush_forearm")]
 script = ExtResource("1_wsil6")

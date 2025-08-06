@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfmtpweekng5d"
-path="res://.godot/imported/Line.png-5f527575651a59fd2e49ca0f38a6180e.ctex"
+uid="uid://cqno4elnskmkd"
+path="res://.godot/imported/mouse_scroll_vertical_outline.svg-a4f8ab9d93d8cfab5de9d9565936f5a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GlobalAssets/Art/UI/Line.png"
-dest_files=["res://.godot/imported/Line.png-5f527575651a59fd2e49ca0f38a6180e.ctex"]
+source_file="res://globals/assets/art/UI/mouse_scroll_vertical_outline.svg"
+dest_files=["res://.godot/imported/mouse_scroll_vertical_outline.svg-a4f8ab9d93d8cfab5de9d9565936f5a0.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

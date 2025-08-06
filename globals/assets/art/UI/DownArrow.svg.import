@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bvusbdfbhb1fb"
-path="res://.godot/imported/DownArrow.svg-e80e9cccbe9f8d9f3db70a2af6ae370a.ctex"
+path="res://.godot/imported/DownArrow.svg-3da077e25269b2607945bce2331be8f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GlobalAssets/Art/UI/DownArrow.svg"
-dest_files=["res://.godot/imported/DownArrow.svg-e80e9cccbe9f8d9f3db70a2af6ae370a.ctex"]
+source_file="res://globals/assets/art/UI/DownArrow.svg"
+dest_files=["res://.godot/imported/DownArrow.svg-3da077e25269b2607945bce2331be8f0.ctex"]
 
 [params]
 
